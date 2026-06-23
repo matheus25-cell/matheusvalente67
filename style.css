@@ -19,7 +19,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 }
-.cabecalho-imagem{
+.cabecalho_imagem{
 width: 10%;
 display: flex;
 justify-content: flex-start;
@@ -50,7 +50,7 @@ text-align: center;
 text-align: center;
 }
 .estudante-imagem{
-width: 20px;
+width: px;
 height: auto;
 }
 .estudante-icone{
