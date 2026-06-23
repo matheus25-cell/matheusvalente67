@@ -7,7 +7,7 @@ body{
 font-family: "Poppins", sans-serif;
 }
 header{
-background-color: #424e61;
+background-color: #000000;
 color: white;
 width: 100%;
 padding: 20px;
@@ -90,7 +90,7 @@ padding: 12px 0;
 }
 
 .link{
-color: #ffffff;
+color: #000000;
 text-decoration: none;
 }
 body{
