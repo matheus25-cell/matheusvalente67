@@ -73,7 +73,7 @@ header{
 }
 
 .estudante{
-  background-color: #2600ff; /* Corrigido: 'background-image: background-color(...)' estava incorreto */
+  background-color: #000000; /* Corrigido: 'background-image: background-color(...)' estava incorreto */
   padding: 24px 0;
 }
 
