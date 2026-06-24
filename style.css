@@ -1,118 +1,129 @@
 *{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
 body{
-font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
+  background-color: #000000; /* Deixa o fundo da página preto */
+  color: #ffffff;            /* Garante que o texto padrão fique branco e visível */
 }
+
 header{
-background-color: #8000ff;
-color: lab(100% 0.01 -0.01);
-width: 100%;
-padding: 20px;
+  background-color: #8000ff;
+  color: lab(100% 0.01 -0.01);
+  width: 100%;
+  padding: 20px;
 }
+
 .cabecalho-itens{
-max-width: 1980px;
-margin: 0 auto;
-display: flex;
-align-items: center;
-justify-content: center;
+  max-width: 1980px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .cabecalho_imagem{
-width: 30%;
-display: flex;
-justify-content: flex-start;
-align-items: center;
+  width: 30%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
+
 .titulo_site{
-padding: 50px;
-text-align: center;
-width: 50%;
-font: 30px;
+  padding: 50px;
+  text-align: center;
+  width: 50%;
+  font-size: 30px; /* Corrigido de 'font: 30px' para 'font-size: 30px' */
 }
+
 .sociais{
-display: flex;
-justify-content: flex-end;
-width: 25%;
-padding-right: 30px;
+  display: flex;
+  justify-content: flex-end;
+  width: 25%;
+  padding-right: 30px;
 }
+
 .banner1 {
   display: flex;
   justify-content: center;
-  width: 100%; /* Faz o banner ocupar toda a largura disponível */
-  
-  /* Opcional: se o banner tiver uma imagem de fundo, use as propriedades abaixo */
+  width: 100%; 
   background-size: cover;
   background-position: center;
 }
-.estudante_titulo{
-padding: 50px;
-text-align: center;
 
+.estudante_titulo{
+  padding: 50px;
+  text-align: center;
 }
+
 .estudante-nome{
-text-align: center;
+  text-align: center;
 }
+
 .estudante-imagem{
-width: 120px;
+  width: 120px;
 }
+
 .estudante-icone{
-width: 38px;
-padding: 4px 8px;
+  width: 38px;
+  padding: 4px 8px;
 }
+
 .estudante{
-background-image: background-color(#2600ff);
-padding: 24px 0;
+  background-color: #2600ff; /* Corrigido: 'background-image: background-color(...)' estava incorreto */
+  padding: 24px 0;
 }
 
 .estudante.div{
-text-align: center;
-padding: 24px 0;
+  text-align: center;
+  padding: 24px 0;
 }
-.estudantes_todos{
-display: flex;
-justify-content: space-around;
-}
-.escola{
-background-image: linear-gradient(hwb(0 0% 100%),hwb(0 0% 100%));
-color: rgb(255, 255, 255);
-display: flex;
-justify-content:center;
-padding: 24px 0;
-text-align:center;
-display:block;
-}
-.escola-titulo{
-padding: 50px;
-text-align: center;
-}
-.logo_rodape{
-height: 80px;
-padding: 12px 0;
 
+.estudantes_todos{
+  display: flex;
+  justify-content: space-around;
+}
+
+.escola{
+  background-image: linear-gradient(hwb(0 0% 100%),hwb(0 0% 100%));
+  color: rgb(255, 255, 255);
+  padding: 24px 0;
+  text-align:center;
+  display:block; /* Substituiu o display: flex anterior */
+}
+
+.escola-titulo{
+  padding: 50px;
+  text-align: center;
+}
+
+.logo_rodape{
+  height: 80px;
+  padding: 12px 0;
 }
 
 .link{
-color: #0008ff;
-text-decoration: none;
+  color: #0008ff;
+  text-decoration: none;
 }
 
 .banner-video {
   display: flex;
-  justify-content: flex-end; /* Empurra o vídeo para a direita */
-  align-items: center;       /* Centraliza verticalmente */
+  justify-content: flex-end; 
+  align-items: center;      
   width: 100%;
-  background-color: #00c8ff;    /* Opcional: fundo preto para destacar o vídeo */
+  background-color: #00c8ff;    
 }
 
-/* Seleciona o vídeo que está dentro do banner */
 .banner-video video {
-  width: 40%;                /* Define a largura do vídeo (ajuste como quiser) */
-  height: auto;              /* Mantém a proporção do vídeo sem distorcer */
+  width: 40%;                
+  height: auto;              
 }
 
 .video {
-  width: 200;
+  width: 200px; /* Adicionado 'px' que estava faltando */
   height: auto;
 }
