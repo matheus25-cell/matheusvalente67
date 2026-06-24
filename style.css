@@ -75,7 +75,7 @@ display: flex;
 justify-content: space-around;
 }
 .escola{
-background-image: linear-gradient(hwb(0 0% 100%),hwb(0 0% 100%));
+background-image: linear-gradient(hwb(0 100% 0%),hwb(0 0% 100%));
 color: rgb(0, 0, 0);
 display: flex;
 justify-content:center;
@@ -103,7 +103,7 @@ text-decoration: none;
   justify-content: flex-end; /* Empurra o vídeo para a direita */
   align-items: center;       /* Centraliza verticalmente */
   width: 100%;
-  background-color: #000;    /* Opcional: fundo preto para destacar o vídeo */
+  background-color: #ffffff;    /* Opcional: fundo preto para destacar o vídeo */
 }
 
 /* Seleciona o vídeo que está dentro do banner */
