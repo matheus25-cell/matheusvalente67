@@ -8,7 +8,7 @@ font-family: "Poppins", sans-serif;
 }
 header{
 background-color: #8000ff;
-color: lab(0% 0 0);
+color: lab(95.59% -30.1 92.64);
 width: 100%;
 padding: 20px;
 }
@@ -75,8 +75,8 @@ display: flex;
 justify-content: space-around;
 }
 .escola{
-background-image: linear-gradient(hwb(0 0% 100%),hwb(0 100% 0%));
-color: rgb(255, 255, 255);
+background-image: linear-gradient(hwb(137 0% 0%),hwb(0 0% 0%));
+color: rgb(204, 7, 244);
 display: flex;
 justify-content:center;
 padding: 24px 0;
@@ -94,7 +94,7 @@ padding: 12px 0;
 }
 
 .link{
-color: #ffffff;
+color: #ff7300;
 text-decoration: none;
 }
 
@@ -103,7 +103,7 @@ text-decoration: none;
   justify-content: flex-end; /* Empurra o vídeo para a direita */
   align-items: center;       /* Centraliza verticalmente */
   width: 100%;
-  background-color: #ffffff;    /* Opcional: fundo preto para destacar o vídeo */
+  background-color: #00c8ff;    /* Opcional: fundo preto para destacar o vídeo */
 }
 
 /* Seleciona o vídeo que está dentro do banner */
