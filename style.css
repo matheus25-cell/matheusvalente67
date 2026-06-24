@@ -7,8 +7,8 @@ body{
 font-family: "Poppins", sans-serif;
 }
 header{
-background-color: #000000;
-color: rgb(255, 255, 255);
+background-color: #035dee;
+color: white;
 width: 100%;
 padding: 20px;
 }
@@ -19,8 +19,8 @@ display: flex;
 align-items: center;
 justify-content: center;
 }
-.cabecalho_imagem{
-width: 30%;
+.cabecalho-imagem{
+width: 10%;
 display: flex;
 justify-content: flex-start;
 align-items: center;
@@ -37,12 +37,17 @@ justify-content: flex-end;
 width: 25%;
 padding-right: 30px;
 }
-.banner1{
-display: flex;
-justify-content: center;
+.banner1 {
+  display: flex;
+  justify-content: center;
+  width: 100%; /* Faz o banner ocupar toda a largura disponível */
+  
+  /* Opcional: se o banner tiver uma imagem de fundo, use as propriedades abaixo */
+  background-size: cover;
+  background-position: center;
 }
 .estudante_titulo{
-padding: 35px;
+padding: 50px;
 text-align: center;
 
 }
@@ -50,16 +55,15 @@ text-align: center;
 text-align: center;
 }
 .estudante-imagem{
-width: 90px;
-height: auto;
+width: 120px;
 }
 .estudante-icone{
-width: 90px;
+width: 38px;
 padding: 4px 8px;
 }
 .estudante{
-background-image: background-color(#ffffff);
-padding: 15px 0;
+background-image: background-color(#2401eb);
+padding: 24px 0;
 }
 
 .estudante.div{
@@ -71,8 +75,8 @@ display: flex;
 justify-content: space-around;
 }
 .escola{
-background-image: linear-gradient(#000000,#000000);
-color: rgb(255, 255, 255);
+background-image: linear-gradient(#40A2E3,#7FC2EF);
+color: white;
 display: flex;
 justify-content:center;
 padding: 24px 0;
@@ -90,11 +94,25 @@ padding: 12px 0;
 }
 
 .link{
-color: #3700ff;
+color: #ffffff;
 text-decoration: none;
 }
-body{
-     color: rgb(0, 0, 255);
+
+.banner-video {
+  display: flex;
+  justify-content: flex-end; /* Empurra o vídeo para a direita */
+  align-items: center;       /* Centraliza verticalmente */
+  width: 100%;
+  background-color: #000;    /* Opcional: fundo preto para destacar o vídeo */
 }
-    
-    
+
+/* Seleciona o vídeo que está dentro do banner */
+.banner-video video {
+  width: 40%;                /* Define a largura do vídeo (ajuste como quiser) */
+  height: auto;              /* Mantém a proporção do vídeo sem distorcer */
+}
+
+.video {
+  width: 200;
+  height: auto;
+}
