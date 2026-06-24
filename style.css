@@ -8,7 +8,7 @@ font-family: "Poppins", sans-serif;
 }
 header{
 background-color: #8000ff;
-color: lab(36.64% 80.89 -100.52);
+color: lab(33.05% 79.44 -106.6);
 width: 100%;
 padding: 20px;
 }
@@ -94,7 +94,7 @@ padding: 12px 0;
 }
 
 .link{
-color: #ffffff;
+color: #000000;
 text-decoration: none;
 }
 
