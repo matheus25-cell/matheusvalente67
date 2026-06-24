@@ -6,124 +6,136 @@
 
 body{
   font-family: "Poppins", sans-serif;
-  background-color: #000000; /* Deixa o fundo da página preto */
-  color: #ffffff;            /* Garante que o texto padrão fique branco e visível */
+  background-color: #000000; /* Fundo totalmente preto */
+  color: #ffffff;            /* Texto geral branco */
 }
 
 header{
-  background-color: #8000ff;
-  color: lab(100% 0.01 -0.01);
+  background-color: #111111; 
+  color: #ffffff;
   width: 100%;
   padding: 20px;
 }
 
 .cabecalho-itens{
-  max-width: 1980px;
+  max-width: 1200px; 
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between; 
 }
 
 .cabecalho_imagem{
-  width: 30%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  width: 80px; 
+  height: auto;
 }
 
 .titulo_site{
-  padding: 50px;
   text-align: center;
-  width: 50%;
-  font-size: 30px; /* Corrigido de 'font: 30px' para 'font-size: 30px' */
+  font-size: 28px; 
 }
 
 .sociais{
   display: flex;
   justify-content: flex-end;
-  width: 25%;
-  padding-right: 30px;
+}
+
+.estudante-icone{
+  width: 48px; 
+  height: auto;
 }
 
 .banner1 {
   display: flex;
   justify-content: center;
   width: 100%; 
-  background-size: cover;
-  background-position: center;
+  background-color: #000000;
+}
+
+.banner1 img {
+  max-width: 100%;
+  height: auto;
 }
 
 .estudante_titulo{
-  padding: 50px;
+  padding: 40px 0 20px 0; 
   text-align: center;
-}
-
-.estudante-nome{
-  text-align: center;
-}
-
-.estudante-imagem{
-  width: 120px;
-}
-
-.estudante-icone{
-  width: 48px;
-  padding: 4px 8px;
+  font-size: 32px;
 }
 
 .estudante{
-  background-color: #000000; /* Corrigido: 'background-image: background-color(...)' estava incorreto */
+  background-color: #000000; 
   padding: 24px 0;
 }
 
-.estudante.div{
-  text-align: center;
-  padding: 24px 0;
-}
-
+/* ORGANIZAÇÃO EM 3 COLUNAS POR FILEIRA */
 .estudantes_todos{
+  display: grid;
+  /* Força o layout a ter exatamente 3 colunas de tamanhos iguais */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 30px; /* Espaço entre as fotos e vídeos */
+  max-width: 900px; 
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.estudante-div{
   display: flex;
-  justify-content: space-around;
-}
-
-.escola{
-  background-image: linear-gradient(hwb(0 0% 100%),hwb(270 0% 2%));
-  color: rgb(255, 255, 255);
-  padding: 24px 0;
-  text-align:center;
-  display:block; /* Substituiu o display: flex anterior */
-}
-
-.escola-titulo{
-  padding: 50px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  background-color: #111111; /* Fundo sutil para destacar os cards */
+  padding: 20px;
+  border-radius: 8px;
 }
 
-.logo_rodape{
-  height: 80px;
-  padding: 12px 0;
+.estudante-nome{
+  margin-top: 10px;
+  font-size: 18px;
 }
 
-.link{
-  color: #6200ff;
-  text-decoration: none;
-}
-
-.banner-video {
-  display: flex;
-  justify-content: flex-end; 
-  align-items: center;      
+.estudante-imagem{
   width: 100%;
-  background-color: #00c8ff;    
-}
-
-.banner-video video {
-  width: 40%;                
-  height: auto;              
+  max-width: 180px; 
+  height: auto;
+  border-radius: 4px;
 }
 
 .video {
-  width: 200px; /* Adicionado 'px' que estava faltando */
+  width: 100%;
+  max-width: 180px; 
   height: auto;
+  border-radius: 4px;
+}
+
+.escola{
+  background-color: #000000; 
+  color: rgb(255, 255, 255);
+  padding: 60px 20px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.escola-titulo{
+  padding: 20px;
+}
+
+.logo_rodape{
+  height: 60px; 
+  margin-bottom: 15px;
+}
+
+.link{
+  color: #8000ff; 
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Ajuste para telas de celular não quebrarem o layout de 3 colunas */
+@media (max-width: 768px) {
+  .estudantes_todos {
+    grid-template-columns: repeat(2, 1fr); /* No celular fica em 2 colunas para caber melhor */
+    gap: 15px;
+  }
 }
