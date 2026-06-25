@@ -1,3 +1,12 @@
+/* Definição da Paleta Futurista */
+:root {
+  --bg-space: #0B0C10;      /* Preto Espacial */
+  --neon-purple: #7B2CBF;   /* Roxo Neon */
+  --electric-blue: #00E5FF; /* Azul Elétrico */
+  --text-pure: #FFFFFF;     /* Branco para textos principais */
+  --text-muted: #A0A5B5;    /* Cinza azulado para textos secundários */
+}
+
 *{
   margin: 0;
   padding: 0;
@@ -6,15 +15,16 @@
 
 body{
   font-family: "Poppins", sans-serif;
-  background-color: #000000; /* Fundo totalmente preto */
-  color: #ffffff;            /* Texto geral branco */
+  background-color: var(--bg-space); /* Aplicado Preto Espacial */
+  color: var(--text-pure);            /* Texto principal branco */
 }
 
 header{
-  background-color: #000000; 
-  color: #ffffff;
+  background-color: var(--bg-space); 
+  color: var(--text-pure);
   width: 100%;
   padding: 20px;
+  border-bottom: 1px solid rgba(123, 44, 191, 0.2); /* Linha fina roxa para dar profundidade */
 }
 
 .cabecalho-itens{
@@ -33,6 +43,7 @@ header{
 .titulo_site{
   text-align: center;
   font-size: 28px; 
+  color: var(--electric-blue); /* Destaque no título principal */
 }
 
 .sociais{
@@ -49,7 +60,7 @@ header{
   display: flex;
   justify-content: center;
   width: 100%; 
-  background-color: #000000;
+  background-color: var(--bg-space);
 }
 
 .banner1 img {
@@ -61,19 +72,19 @@ header{
   padding: 40px 0 20px 0; 
   text-align: center;
   font-size: 32px;
+  color: var(--neon-purple); /* Título das seções em Roxo Neon */
 }
 
 .estudante{
-  background-color: #000000; 
+  background-color: var(--bg-space); 
   padding: 24px 0;
 }
 
 /* ORGANIZAÇÃO EM 3 COLUNAS POR FILEIRA */
 .estudantes_todos{
   display: grid;
-  /* Força o layout a ter exatamente 3 colunas de tamanhos iguais */
   grid-template-columns: repeat(3, 1fr); 
-  gap: 30px; /* Espaço entre as fotos e vídeos */
+  gap: 30px; 
   max-width: 900px; 
   margin: 0 auto;
   padding: 20px;
@@ -85,14 +96,24 @@ header{
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: #111111; /* Fundo sutil para destacar os cards */
+  background-color: rgba(123, 44, 191, 0.05); /* Fundo roxo bem transparente */
   padding: 20px;
   border-radius: 8px;
+  border: 1px solid rgba(123, 44, 191, 0.3);  /* Borda roxa sutil */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito de hover futurista nos cards */
+.estudante-div:hover {
+  transform: translateY(-5px);
+  border-color: var(--electric-blue); /* Muda a borda para azul ao passar o mouse */
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.2); /* Brilho neon azul */
 }
 
 .estudante-nome{
   margin-top: 10px;
   font-size: 18px;
+  color: var(--text-pure);
 }
 
 .estudante-imagem{
@@ -110,8 +131,8 @@ header{
 }
 
 .escola{
-  background-color: #000000; 
-  color: rgb(255, 255, 255);
+  background-color: var(--bg-space); 
+  color: var(--text-muted); /* Texto explicativo ligeiramente mais suave */
   padding: 60px 20px;
   text-align: center;
   line-height: 1.6;
@@ -119,6 +140,7 @@ header{
 
 .escola-titulo{
   padding: 20px;
+  color: var(--neon-purple);
 }
 
 .logo_rodape{
@@ -127,15 +149,21 @@ header{
 }
 
 .link{
-  color: #8000ff; 
+  color: var(--electric-blue); /* Links em Azul Elétrico */
   text-decoration: none;
   font-weight: bold;
+  transition: color 0.3s ease;
 }
 
-/* Ajuste para telas de celular não quebrarem o layout de 3 colunas */
+.link:hover {
+  color: var(--neon-purple); /* Link muda para roxo no hover */
+  text-shadow: 0 0 8px var(--neon-purple); /* Efeito brilhante no texto */
+}
+
+/* Ajuste para telas de celular */
 @media (max-width: 768px) {
   .estudantes_todos {
-    grid-template-columns: repeat(2, 1fr); /* No celular fica em 2 colunas para caber melhor */
+    grid-template-columns: repeat(2, 1fr); 
     gap: 15px;
   }
 }
