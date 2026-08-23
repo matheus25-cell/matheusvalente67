@@ -292,3 +292,99 @@ header{
   }
 
 }
+
+/* CONTATO */
+
+.contato{
+  padding:50px 20px;
+  text-align:center;
+  border-top:1px solid #7b2cbf33;
+}
+
+.contato h2{
+  color:var(--blue);
+  margin-bottom:10px;
+}
+
+.contato p{
+  color:var(--gray);
+  margin-bottom:25px;
+}
+
+.contatos{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.contato-item{
+  width:200px;
+  padding:18px;
+  border:1px solid var(--purple);
+  border-radius:8px;
+  color:white;
+  text-decoration:none;
+  background:#7b2cbf0d;
+  transition:.3s;
+}
+
+.contato-item span{
+  display:block;
+  margin-top:8px;
+}
+
+.contato-item:hover{
+  transform:translateY(-5px);
+  border-color:var(--blue);
+  box-shadow:0 0 15px #00e5ff33;
+}
+
+.whatsapp:hover{
+  background:#25D366;
+}
+
+.instagram:hover{
+  background:#7B2CBF;
+}
+
+.mapa:hover{
+  background:#0088cc;
+}
+
+
+/* VÍDEO DO YOUTUBE DENTRO DA GALERIA */
+
+.estudante-div .video-wrapper{
+  width:100%;
+  padding-bottom:56.25%;
+  position:relative;
+  overflow:hidden;
+  border-radius:5px;
+}
+
+.estudante-div .video-wrapper iframe{
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  border:0;
+}
+
+
+/* CELULAR */
+
+@media(max-width:600px){
+
+  .contatos{
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .contato-item{
+    width:90%;
+    max-width:300px;
+  }
+
+}
