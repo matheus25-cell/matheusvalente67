@@ -1,165 +1,871 @@
+/* =========================================================
+   CONFIGURAÇÕES GERAIS
+   ========================================================= */
+
 :root {
-  --bg-space: #0B0C10;      
-  --neon-purple: #7B2CBF;   
-  --electric-blue: #00E5FF; 
-  --text-pure: #FFFFFF;     
-  --text-muted: #A0A5B5;    
+  --bg-space: #0B0C10;
+  --neon-purple: #7B2CBF;
+  --electric-blue: #00E5FF;
+  --text-pure: #FFFFFF;
+  --text-muted: #A0A5B5;
+  --card-bg: rgba(123, 44, 191, 0.05);
+  --border-purple: rgba(123, 44, 191, 0.3);
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body{
-  font-family: "Poppins", sans-serif;
-  background-color: var(--bg-space); 
-  color: var(--text-pure);            
+html {
+  scroll-behavior: smooth;
 }
 
-header{
-  background-color: var(--bg-space); 
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg-space);
   color: var(--text-pure);
+}
+
+
+/* =========================================================
+   CABEÇALHO
+   ========================================================= */
+
+header {
   width: 100%;
   padding: 20px;
-  border-bottom: 1px solid rgba(123, 44, 191, 0.2); 
+
+  background-color: var(--bg-space);
+
+  color: var(--text-pure);
+
+  border-bottom: 1px solid rgba(123, 44, 191, 0.2);
+
+  position: relative;
+  z-index: 1000;
 }
 
-.cabecalho-itens{
-  max-width: 1200px; 
+.cabecalho-itens {
+  max-width: 1200px;
+
   margin: 0 auto;
+
   display: flex;
+
   align-items: center;
-  justify-content: space-between; 
+
+  justify-content: space-between;
+
+  gap: 20px;
 }
 
-.cabecalho_imagem{
-  width: 80px; 
-  height: auto;
+
+/* =========================================================
+   FOTO DO CABEÇALHO
+   ========================================================= */
+
+.cabecalho_imagem {
+  width: 80px;
+
+  height: 80px;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+
+  border: 2px solid var(--neon-purple);
+
+  transition: 0.3s ease;
 }
 
-.titulo_site{
+.cabecalho_imagem:hover {
+  border-color: var(--electric-blue);
+
+  box-shadow:
+    0 0 12px rgba(0, 229, 255, 0.4);
+}
+
+
+/* =========================================================
+   TÍTULO
+   ========================================================= */
+
+.titulo_site {
+  flex: 1;
+
   text-align: center;
-  font-size: 28px; 
-  color: var(--electric-blue); 
+
+  font-size: 28px;
+
+  color: var(--electric-blue);
+
+  text-shadow:
+    0 0 8px rgba(0, 229, 255, 0.3);
 }
 
-.sociais{
+
+/* =========================================================
+   REDES SOCIAIS
+   ========================================================= */
+
+.sociais {
   display: flex;
+
   justify-content: flex-end;
+
+  align-items: center;
 }
 
-.estudante-icone{
-  width: 52px; 
-  height: auto;
+.estudante-icone {
+  width: 52px;
+
+  height: 52px;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+
+  transition: 0.3s ease;
 }
+
+.estudante-icone:hover {
+  transform: scale(1.1);
+
+  box-shadow:
+    0 0 12px rgba(0, 229, 255, 0.5);
+}
+
+
+/* =========================================================
+   MENU DROPDOWN
+   ========================================================= */
+
+.dropdown {
+  position: relative;
+
+  display: inline-block;
+}
+
+
+/* Botão do menu */
+
+.dropbtn {
+  background-color: transparent;
+
+  color: var(--electric-blue);
+
+  border: 1px solid var(--neon-purple);
+
+  padding: 11px 18px;
+
+  font-size: 16px;
+
+  font-family: inherit;
+
+  font-weight: bold;
+
+  border-radius: 6px;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+
+/* Hover do botão */
+
+.dropbtn:hover {
+  background-color: var(--neon-purple);
+
+  color: white;
+
+  border-color: var(--electric-blue);
+
+  box-shadow:
+    0 0 10px rgba(123, 44, 191, 0.6),
+    0 0 15px rgba(0, 229, 255, 0.2);
+}
+
+
+/* Conteúdo do menu */
+
+.dropdown-content {
+  display: none;
+
+  position: absolute;
+
+  right: 0;
+
+  top: calc(100% + 8px);
+
+  min-width: 210px;
+
+  background-color: #11131a;
+
+  border: 1px solid rgba(123, 44, 191, 0.6);
+
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(123, 44, 191, 0.2);
+
+  z-index: 9999;
+}
+
+
+/* Links do menu */
+
+.dropdown-content a {
+  display: block;
+
+  padding: 13px 18px;
+
+  color: var(--text-pure);
+
+  text-decoration: none;
+
+  font-size: 15px;
+
+  transition: all 0.25s ease;
+}
+
+
+/* Hover dos links */
+
+.dropdown-content a:hover {
+  background-color: var(--neon-purple);
+
+  color: white;
+
+  padding-left: 24px;
+
+  box-shadow:
+    inset 4px 0 0 var(--electric-blue);
+}
+
+
+/* Mostrar menu ao passar o mouse */
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+/* =========================================================
+   BANNER
+   ========================================================= */
 
 .banner1 {
   display: flex;
+
   justify-content: center;
-  width: 100%; 
+
+  align-items: center;
+
+  width: 100%;
+
   background-color: var(--bg-space);
+
+  overflow: hidden;
 }
 
 .banner1 img {
+  display: block;
+
   max-width: 100%;
+
   height: auto;
 }
 
-.estudante_titulo{
-  padding: 40px 0 20px 0; 
-  text-align: center;
-  font-size: 32px;
-  color: var(--neon-purple); 
+
+/* =========================================================
+   SOBRE MIM
+   ========================================================= */
+
+.sobre-mim {
+  background-color: var(--bg-space);
+
+  color: var(--text-pure);
+
+  border-top: 1px solid rgba(123, 44, 191, 0.1);
+
+  border-bottom: 1px solid rgba(123, 44, 191, 0.1);
 }
 
-.estudante{
-  background-color: var(--bg-space); 
+.sobre-mim h2 {
+  color: var(--electric-blue);
+
+  text-shadow:
+    0 0 8px rgba(0, 229, 255, 0.25);
+}
+
+.sobre-mim p {
+  color: var(--text-muted);
+}
+
+
+/* =========================================================
+   SEÇÃO DOS ESTUDANTES / FOTOS
+   ========================================================= */
+
+.estudante {
+  background-color: var(--bg-space);
+
   padding: 24px 0;
 }
 
-.estudantes_todos{
+
+/* Título */
+
+.estudante_titulo {
+  padding: 40px 0 20px 0;
+
+  text-align: center;
+
+  font-size: 32px;
+
+  color: var(--neon-purple);
+
+  text-shadow:
+    0 0 10px rgba(123, 44, 191, 0.5);
+}
+
+
+/* Grid */
+
+.estudantes_todos {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 30px; 
-  max-width: 900px; 
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 30px;
+
+  max-width: 900px;
+
   margin: 0 auto;
+
   padding: 20px;
 }
 
-.estudante-div{
+
+/* =========================================================
+   CARTÕES
+   ========================================================= */
+
+.estudante-div {
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   justify-content: center;
+
   text-align: center;
-  background-color: rgba(123, 44, 191, 0.05); 
+
+  background-color: var(--card-bg);
+
   padding: 20px;
+
   border-radius: 8px;
-  border: 1px solid rgba(123, 44, 191, 0.3);  
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  border: 1px solid var(--border-purple);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
+
+
+/* Efeito hover */
 
 .estudante-div:hover {
   transform: translateY(-5px);
-  border-color: var(--electric-blue); 
-  box-shadow: 0 0 15px rgba(0, 229, 255, 0.2); 
+
+  border-color: var(--electric-blue);
+
+  box-shadow:
+    0 0 15px rgba(0, 229, 255, 0.2),
+    0 0 25px rgba(123, 44, 191, 0.15);
 }
 
-.estudante-nome{
+
+/* =========================================================
+   NOME DAS FOTOS
+   ========================================================= */
+
+.estudante-nome {
   margin-top: 10px;
+
   font-size: 18px;
+
   color: var(--text-pure);
 }
 
-.estudante-imagem{
+
+/* =========================================================
+   IMAGENS
+   ========================================================= */
+
+.estudante-imagem {
   width: 100%;
-  max-width: 180px; 
+
+  max-width: 180px;
+
   height: auto;
+
   border-radius: 4px;
+
+  display: block;
+
+  transition: transform 0.3s ease;
 }
+
+.estudante-div:hover .estudante-imagem {
+  transform: scale(1.03);
+}
+
+
+/* =========================================================
+   VÍDEOS LOCAIS
+   ========================================================= */
 
 .video {
   width: 100%;
-  max-width: 180px; 
+
+  max-width: 180px;
+
   height: auto;
+
   border-radius: 4px;
+
+  display: block;
+
+  background-color: #000;
 }
 
-.escola{
-  background-color: var(--bg-space); 
-  color: var(--text-muted); 
-  padding: 60px 20px;
+
+/* =========================================================
+   VÍDEO DO YOUTUBE
+   ========================================================= */
+
+.video-youtube-container {
+  padding: 40px 20px;
+
   text-align: center;
-  line-height: 1.6;
+
+  max-width: 900px;
+
+  margin: 0 auto;
 }
 
-.escola-titulo{
+.video-wrapper {
+  position: relative;
+
+  padding-bottom: 56.25%;
+
+  height: 0;
+
+  overflow: hidden;
+
+  border-radius: 12px;
+
+  background-color: #000;
+
+  box-shadow:
+    0 0 20px rgba(123, 44, 191, 0.3);
+}
+
+.video-wrapper iframe {
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  border: 0;
+}
+
+
+/* =========================================================
+   RODAPÉ
+   ========================================================= */
+
+.escola {
+  background-color: var(--bg-space);
+
+  color: var(--text-muted);
+
+  padding: 60px 20px;
+
+  text-align: center;
+
+  line-height: 1.6;
+
+  border-top: 1px solid rgba(123, 44, 191, 0.2);
+}
+
+
+/* Título do rodapé */
+
+.escola-título {
   padding: 20px;
+
   color: var(--neon-purple);
 }
 
-.logo_rodape{
-  height: 60px; 
+
+/* =========================================================
+   LOGO DO RODAPÉ
+   ========================================================= */
+
+.logo_rodape {
+  height: 60px;
+
+  width: 60px;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+
   margin-bottom: 15px;
 }
 
-.link{
-  color: var(--electric-blue); 
+
+/* =========================================================
+   LINK DO WHATSAPP
+   ========================================================= */
+
+.link {
+  color: var(--electric-blue);
+
   text-decoration: none;
+
   font-weight: bold;
-  transition: color 0.3s ease;
+
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease;
 }
 
 .link:hover {
-  color: var(--neon-purple); 
-  text-shadow: 0 0 8px var(--neon-purple); 
+  color: var(--neon-purple);
+
+  text-shadow:
+    0 0 8px var(--neon-purple);
 }
 
-@media (max-width: 768px) {
+
+/* =========================================================
+   LINK DO GOOGLE MAPS
+   ========================================================= */
+
+.link-mapa {
+  color: var(--electric-blue) !important;
+
+  text-decoration: underline;
+
+  font-weight: bold;
+
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease;
+}
+
+.link-mapa:hover {
+  color: var(--neon-purple) !important;
+
+  text-shadow:
+    0 0 8px var(--neon-purple);
+}
+
+
+/* =========================================================
+   CONTAINER DO MAPA
+   ========================================================= */
+
+.container-mapa {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
   .estudantes_todos {
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+  }
+
+  .titulo_site {
+    font-size: 24px;
+  }
+
+}
+
+
+/* =========================================================
+   CELULAR
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  /* Cabeçalho */
+
+  header {
+    padding: 15px;
+  }
+
+  .cabecalho-itens {
+    flex-wrap: wrap;
+
+    justify-content: center;
+
     gap: 15px;
   }
+
+
+  /* Foto */
+
+  .cabecalho_imagem {
+    width: 65px;
+
+    height: 65px;
+  }
+
+
+  /* Instagram */
+
+  .estudante-icone {
+    width: 45px;
+
+    height: 45px;
+  }
+
+
+  /* Título */
+
+  .titulo_site {
+    order: 3;
+
+    flex-basis: 100%;
+
+    font-size: 22px;
+
+    text-align: center;
+  }
+
+
+  /* Menu */
+
+  .dropdown {
+    margin-left: auto;
+  }
+
+  .dropbtn {
+    padding: 9px 13px;
+
+    font-size: 14px;
+  }
+
+
+  .dropdown-content {
+    right: 0;
+
+    min-width: 190px;
+  }
+
+
+  .dropdown-content a {
+    font-size: 14px;
+
+    padding: 12px 15px;
+  }
+
+
+  /* Galeria */
+
+  .estudantes_todos {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 15px;
+
+    padding: 15px;
+  }
+
+
+  .estudante-div {
+    padding: 15px;
+  }
+
+
+  .estudante-imagem,
+  .video {
+    max-width: 100%;
+  }
+
+
+  .estudante_titulo {
+    font-size: 28px;
+
+    padding-top: 30px;
+  }
+
+
+  /* Sobre */
+
+  .sobre-mim {
+    padding: 30px 20px !important;
+  }
+
+
+  .sobre-mim h2 {
+    font-size: 2rem !important;
+  }
+
+
+  .sobre-mim p {
+    font-size: 1rem !important;
+  }
+
+
+  /* YouTube */
+
+  .video-youtube-container {
+    padding: 30px 15px;
+  }
+
+
+  /* Rodapé */
+
+  .container-mapa {
+    flex-direction: column;
+
+    gap: 8px;
+  }
+
+}
+
+
+/* =========================================================
+   CELULARES PEQUENOS
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .cabecalho-itens {
+    gap: 10px;
+  }
+
+
+  .cabecalho_imagem {
+    width: 55px;
+
+    height: 55px;
+  }
+
+
+  .estudante-icone {
+    width: 40px;
+
+    height: 40px;
+  }
+
+
+  .titulo_site {
+    font-size: 19px;
+  }
+
+
+  .dropbtn {
+    padding: 8px 10px;
+
+    font-size: 13px;
+  }
+
+
+  /* Menu ocupa uma largura confortável */
+
+  .dropdown-content {
+    min-width: 180px;
+  }
+
+
+  /* Galeria vira uma coluna */
+
+  .estudantes_todos {
+    grid-template-columns: 1fr;
+
+    max-width: 400px;
+
+    gap: 15px;
+  }
+
+
+  .estudante_titulo {
+    font-size: 25px;
+  }
+
+
+  /* Rodapé */
+
+  .escola {
+    padding: 40px 15px;
+  }
+
+
+  .escola-título {
+    font-size: 18px;
+  }
+
+}
+
+
+/* =========================================================
+   ANIMAÇÃO SUAVE
+   ========================================================= */
+
+@keyframes aparecer {
+
+  from {
+    opacity: 0;
+
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+
+}
+
+
+.sobre-mim,
+.estudante,
+.video-youtube-container {
+  animation: aparecer 0.7s ease;
 }
