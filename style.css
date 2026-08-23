@@ -1,871 +1,294 @@
-/* =========================================================
-   CONFIGURAÇÕES GERAIS
-   ========================================================= */
-
-:root {
-  --bg-space: #0B0C10;
-  --neon-purple: #7B2CBF;
-  --electric-blue: #00E5FF;
-  --text-pure: #FFFFFF;
-  --text-muted: #A0A5B5;
-  --card-bg: rgba(123, 44, 191, 0.05);
-  --border-purple: rgba(123, 44, 191, 0.3);
+:root{
+  --bg:#0B0C10;
+  --purple:#7B2CBF;
+  --blue:#00E5FF;
+  --white:#fff;
+  --gray:#A0A5B5;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+html{
+  scroll-behavior:smooth;
 }
 
-body {
-  font-family: "Poppins", sans-serif;
-  background-color: var(--bg-space);
-  color: var(--text-pure);
+body{
+  font-family:"Poppins",sans-serif;
+  background:var(--bg);
+  color:var(--white);
 }
 
+/* CABEÇALHO */
 
-/* =========================================================
-   CABEÇALHO
-   ========================================================= */
-
-header {
-  width: 100%;
-  padding: 20px;
-
-  background-color: var(--bg-space);
-
-  color: var(--text-pure);
-
-  border-bottom: 1px solid rgba(123, 44, 191, 0.2);
-
-  position: relative;
-  z-index: 1000;
+header{
+  padding:20px;
+  border-bottom:1px solid #7b2cbf33;
 }
 
-.cabecalho-itens {
-  max-width: 1200px;
-
-  margin: 0 auto;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  gap: 20px;
+.cabecalho-itens{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
 }
 
-
-/* =========================================================
-   FOTO DO CABEÇALHO
-   ========================================================= */
-
-.cabecalho_imagem {
-  width: 80px;
-
-  height: 80px;
-
-  object-fit: cover;
-
-  border-radius: 50%;
-
-  border: 2px solid var(--neon-purple);
-
-  transition: 0.3s ease;
+.cabecalho_imagem{
+  width:80px;
+  height:80px;
+  object-fit:cover;
+  border-radius:50%;
+  border:2px solid var(--purple);
 }
 
-.cabecalho_imagem:hover {
-  border-color: var(--electric-blue);
-
-  box-shadow:
-    0 0 12px rgba(0, 229, 255, 0.4);
+.titulo_site{
+  flex:1;
+  text-align:center;
+  font-size:28px;
+  color:var(--blue);
 }
 
-
-/* =========================================================
-   TÍTULO
-   ========================================================= */
-
-.titulo_site {
-  flex: 1;
-
-  text-align: center;
-
-  font-size: 28px;
-
-  color: var(--electric-blue);
-
-  text-shadow:
-    0 0 8px rgba(0, 229, 255, 0.3);
+.estudante-icone{
+  width:52px;
+  border-radius:50%;
 }
 
+/* MENU */
 
-/* =========================================================
-   REDES SOCIAIS
-   ========================================================= */
-
-.sociais {
-  display: flex;
-
-  justify-content: flex-end;
-
-  align-items: center;
+.dropdown{
+  position:relative;
 }
 
-.estudante-icone {
-  width: 52px;
-
-  height: 52px;
-
-  object-fit: cover;
-
-  border-radius: 50%;
-
-  transition: 0.3s ease;
+.dropbtn{
+  padding:10px 16px;
+  background:none;
+  color:var(--blue);
+  border:1px solid var(--purple);
+  border-radius:6px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-.estudante-icone:hover {
-  transform: scale(1.1);
-
-  box-shadow:
-    0 0 12px rgba(0, 229, 255, 0.5);
+.dropbtn:hover{
+  background:var(--purple);
+  color:white;
 }
 
-
-/* =========================================================
-   MENU DROPDOWN
-   ========================================================= */
-
-.dropdown {
-  position: relative;
-
-  display: inline-block;
+.dropdown-content{
+  display:none;
+  position:absolute;
+  right:0;
+  top:calc(100% + 6px);
+  min-width:200px;
+  background:#11131a;
+  border:1px solid var(--purple);
+  border-radius:7px;
+  overflow:hidden;
+  z-index:10;
 }
 
-
-/* Botão do menu */
-
-.dropbtn {
-  background-color: transparent;
-
-  color: var(--electric-blue);
-
-  border: 1px solid var(--neon-purple);
-
-  padding: 11px 18px;
-
-  font-size: 16px;
-
-  font-family: inherit;
-
-  font-weight: bold;
-
-  border-radius: 6px;
-
-  cursor: pointer;
-
-  transition: all 0.3s ease;
+.dropdown-content a{
+  display:block;
+  padding:12px 16px;
+  color:white;
+  text-decoration:none;
 }
 
-
-/* Hover do botão */
-
-.dropbtn:hover {
-  background-color: var(--neon-purple);
-
-  color: white;
-
-  border-color: var(--electric-blue);
-
-  box-shadow:
-    0 0 10px rgba(123, 44, 191, 0.6),
-    0 0 15px rgba(0, 229, 255, 0.2);
+.dropdown-content a:hover{
+  background:var(--purple);
 }
 
-
-/* Conteúdo do menu */
-
-.dropdown-content {
-  display: none;
-
-  position: absolute;
-
-  right: 0;
-
-  top: calc(100% + 8px);
-
-  min-width: 210px;
-
-  background-color: #11131a;
-
-  border: 1px solid rgba(123, 44, 191, 0.6);
-
-  border-radius: 8px;
-
-  overflow: hidden;
-
-  box-shadow:
-    0 8px 20px rgba(0, 0, 0, 0.5),
-    0 0 15px rgba(123, 44, 191, 0.2);
-
-  z-index: 9999;
+.dropdown:hover .dropdown-content{
+  display:block;
 }
 
+/* BANNER */
 
-/* Links do menu */
-
-.dropdown-content a {
-  display: block;
-
-  padding: 13px 18px;
-
-  color: var(--text-pure);
-
-  text-decoration: none;
-
-  font-size: 15px;
-
-  transition: all 0.25s ease;
+.banner1{
+  display:flex;
+  justify-content:center;
 }
 
-
-/* Hover dos links */
-
-.dropdown-content a:hover {
-  background-color: var(--neon-purple);
-
-  color: white;
-
-  padding-left: 24px;
-
-  box-shadow:
-    inset 4px 0 0 var(--electric-blue);
+.banner1 img{
+  max-width:100%;
+  height:auto;
 }
 
+/* SOBRE */
 
-/* Mostrar menu ao passar o mouse */
-
-.dropdown:hover .dropdown-content {
-  display: block;
+.sobre-mim{
+  max-width:900px;
+  margin:auto;
+  padding:50px 20px;
+  text-align:center;
 }
 
-
-/* =========================================================
-   BANNER
-   ========================================================= */
-
-.banner1 {
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  width: 100%;
-
-  background-color: var(--bg-space);
-
-  overflow: hidden;
+.sobre-mim h2{
+  margin-bottom:20px;
+  color:var(--blue);
 }
 
-.banner1 img {
-  display: block;
-
-  max-width: 100%;
-
-  height: auto;
+.sobre-mim p{
+  color:var(--gray);
+  line-height:1.8;
 }
 
+/* GALERIA */
 
-/* =========================================================
-   SOBRE MIM
-   ========================================================= */
-
-.sobre-mim {
-  background-color: var(--bg-space);
-
-  color: var(--text-pure);
-
-  border-top: 1px solid rgba(123, 44, 191, 0.1);
-
-  border-bottom: 1px solid rgba(123, 44, 191, 0.1);
+.estudante{
+  padding:30px 0;
 }
 
-.sobre-mim h2 {
-  color: var(--electric-blue);
-
-  text-shadow:
-    0 0 8px rgba(0, 229, 255, 0.25);
+.estudante_titulo{
+  text-align:center;
+  margin:20px;
+  color:var(--purple);
 }
 
-.sobre-mim p {
-  color: var(--text-muted);
+.estudantes_todos{
+  max-width:1000px;
+  margin:auto;
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
 }
 
-
-/* =========================================================
-   SEÇÃO DOS ESTUDANTES / FOTOS
-   ========================================================= */
-
-.estudante {
-  background-color: var(--bg-space);
-
-  padding: 24px 0;
+.estudante-div{
+  padding:20px;
+  text-align:center;
+  background:#7b2cbf0d;
+  border:1px solid #7b2cbf4d;
+  border-radius:8px;
+  transition:.3s;
 }
 
-
-/* Título */
-
-.estudante_titulo {
-  padding: 40px 0 20px 0;
-
-  text-align: center;
-
-  font-size: 32px;
-
-  color: var(--neon-purple);
-
-  text-shadow:
-    0 0 10px rgba(123, 44, 191, 0.5);
+.estudante-div:hover{
+  transform:translateY(-5px);
+  border-color:var(--blue);
+  box-shadow:0 0 15px #00e5ff33;
 }
 
-
-/* Grid */
-
-.estudantes_todos {
-  display: grid;
-
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 30px;
-
-  max-width: 900px;
-
-  margin: 0 auto;
-
-  padding: 20px;
+.estudante-imagem,
+.video{
+  width:100%;
+  max-width:220px;
+  height:250px;
+  object-fit:cover;
+  border-radius:5px;
 }
 
-
-/* =========================================================
-   CARTÕES
-   ========================================================= */
-
-.estudante-div {
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  justify-content: center;
-
-  text-align: center;
-
-  background-color: var(--card-bg);
-
-  padding: 20px;
-
-  border-radius: 8px;
-
-  border: 1px solid var(--border-purple);
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
+.estudante-nome{
+  margin-top:10px;
 }
 
+/* YOUTUBE */
 
-/* Efeito hover */
-
-.estudante-div:hover {
-  transform: translateY(-5px);
-
-  border-color: var(--electric-blue);
-
-  box-shadow:
-    0 0 15px rgba(0, 229, 255, 0.2),
-    0 0 25px rgba(123, 44, 191, 0.15);
+.video-youtube-container{
+  max-width:900px;
+  margin:auto;
+  padding:40px 20px;
+  text-align:center;
 }
 
-
-/* =========================================================
-   NOME DAS FOTOS
-   ========================================================= */
-
-.estudante-nome {
-  margin-top: 10px;
-
-  font-size: 18px;
-
-  color: var(--text-pure);
+.video-wrapper{
+  position:relative;
+  padding-bottom:56.25%;
+  height:0;
+  overflow:hidden;
+  margin-top:20px;
+  border-radius:10px;
 }
 
-
-/* =========================================================
-   IMAGENS
-   ========================================================= */
-
-.estudante-imagem {
-  width: 100%;
-
-  max-width: 180px;
-
-  height: auto;
-
-  border-radius: 4px;
-
-  display: block;
-
-  transition: transform 0.3s ease;
+.video-wrapper iframe{
+  position:absolute;
+  width:100%;
+  height:100%;
+  border:0;
+  left:0;
+  top:0;
 }
 
-.estudante-div:hover .estudante-imagem {
-  transform: scale(1.03);
+/* RODAPÉ */
+
+.escola{
+  padding:50px 20px;
+  text-align:center;
+  color:var(--gray);
+  border-top:1px solid #7b2cbf33;
 }
 
-
-/* =========================================================
-   VÍDEOS LOCAIS
-   ========================================================= */
-
-.video {
-  width: 100%;
-
-  max-width: 180px;
-
-  height: auto;
-
-  border-radius: 4px;
-
-  display: block;
-
-  background-color: #000;
+.container-mapa{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  margin-bottom:15px;
 }
 
-
-/* =========================================================
-   VÍDEO DO YOUTUBE
-   ========================================================= */
-
-.video-youtube-container {
-  padding: 40px 20px;
-
-  text-align: center;
-
-  max-width: 900px;
-
-  margin: 0 auto;
+.logo_rodape{
+  width:50px;
+  height:50px;
+  border-radius:50%;
 }
 
-.video-wrapper {
-  position: relative;
-
-  padding-bottom: 56.25%;
-
-  height: 0;
-
-  overflow: hidden;
-
-  border-radius: 12px;
-
-  background-color: #000;
-
-  box-shadow:
-    0 0 20px rgba(123, 44, 191, 0.3);
+.link-mapa,
+.link{
+  color:var(--blue);
+  font-weight:bold;
 }
 
-.video-wrapper iframe {
-  position: absolute;
-
-  top: 0;
-
-  left: 0;
-
-  width: 100%;
-
-  height: 100%;
-
-  border: 0;
+.link{
+  text-decoration:none;
 }
 
+/* CELULAR */
 
-/* =========================================================
-   RODAPÉ
-   ========================================================= */
+@media(max-width:768px){
 
-.escola {
-  background-color: var(--bg-space);
-
-  color: var(--text-muted);
-
-  padding: 60px 20px;
-
-  text-align: center;
-
-  line-height: 1.6;
-
-  border-top: 1px solid rgba(123, 44, 191, 0.2);
-}
-
-
-/* Título do rodapé */
-
-.escola-título {
-  padding: 20px;
-
-  color: var(--neon-purple);
-}
-
-
-/* =========================================================
-   LOGO DO RODAPÉ
-   ========================================================= */
-
-.logo_rodape {
-  height: 60px;
-
-  width: 60px;
-
-  object-fit: cover;
-
-  border-radius: 50%;
-
-  margin-bottom: 15px;
-}
-
-
-/* =========================================================
-   LINK DO WHATSAPP
-   ========================================================= */
-
-.link {
-  color: var(--electric-blue);
-
-  text-decoration: none;
-
-  font-weight: bold;
-
-  transition:
-    color 0.3s ease,
-    text-shadow 0.3s ease;
-}
-
-.link:hover {
-  color: var(--neon-purple);
-
-  text-shadow:
-    0 0 8px var(--neon-purple);
-}
-
-
-/* =========================================================
-   LINK DO GOOGLE MAPS
-   ========================================================= */
-
-.link-mapa {
-  color: var(--electric-blue) !important;
-
-  text-decoration: underline;
-
-  font-weight: bold;
-
-  transition:
-    color 0.3s ease,
-    text-shadow 0.3s ease;
-}
-
-.link-mapa:hover {
-  color: var(--neon-purple) !important;
-
-  text-shadow:
-    0 0 8px var(--neon-purple);
-}
-
-
-/* =========================================================
-   CONTAINER DO MAPA
-   ========================================================= */
-
-.container-mapa {
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  gap: 10px;
-
-  margin-bottom: 15px;
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 900px) {
-
-  .estudantes_todos {
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 20px;
+  .cabecalho-itens{
+    flex-wrap:wrap;
   }
 
-  .titulo_site {
-    font-size: 24px;
+  .titulo_site{
+    order:3;
+    flex-basis:100%;
+    font-size:22px;
+  }
+
+  .cabecalho_imagem{
+    width:60px;
+    height:60px;
+  }
+
+  .estudante-icone{
+    width:45px;
+  }
+
+  .estudantes_todos{
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
   }
 
 }
 
+@media(max-width:480px){
 
-/* =========================================================
-   CELULAR
-   ========================================================= */
-
-@media (max-width: 768px) {
-
-  /* Cabeçalho */
-
-  header {
-    padding: 15px;
+  .estudantes_todos{
+    grid-template-columns:1fr;
   }
 
-  .cabecalho-itens {
-    flex-wrap: wrap;
-
-    justify-content: center;
-
-    gap: 15px;
+  .titulo_site{
+    font-size:19px;
   }
 
-
-  /* Foto */
-
-  .cabecalho_imagem {
-    width: 65px;
-
-    height: 65px;
+  .container-mapa{
+    flex-direction:column;
   }
 
-
-  /* Instagram */
-
-  .estudante-icone {
-    width: 45px;
-
-    height: 45px;
-  }
-
-
-  /* Título */
-
-  .titulo_site {
-    order: 3;
-
-    flex-basis: 100%;
-
-    font-size: 22px;
-
-    text-align: center;
-  }
-
-
-  /* Menu */
-
-  .dropdown {
-    margin-left: auto;
-  }
-
-  .dropbtn {
-    padding: 9px 13px;
-
-    font-size: 14px;
-  }
-
-
-  .dropdown-content {
-    right: 0;
-
-    min-width: 190px;
-  }
-
-
-  .dropdown-content a {
-    font-size: 14px;
-
-    padding: 12px 15px;
-  }
-
-
-  /* Galeria */
-
-  .estudantes_todos {
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 15px;
-
-    padding: 15px;
-  }
-
-
-  .estudante-div {
-    padding: 15px;
-  }
-
-
-  .estudante-imagem,
-  .video {
-    max-width: 100%;
-  }
-
-
-  .estudante_titulo {
-    font-size: 28px;
-
-    padding-top: 30px;
-  }
-
-
-  /* Sobre */
-
-  .sobre-mim {
-    padding: 30px 20px !important;
-  }
-
-
-  .sobre-mim h2 {
-    font-size: 2rem !important;
-  }
-
-
-  .sobre-mim p {
-    font-size: 1rem !important;
-  }
-
-
-  /* YouTube */
-
-  .video-youtube-container {
-    padding: 30px 15px;
-  }
-
-
-  /* Rodapé */
-
-  .container-mapa {
-    flex-direction: column;
-
-    gap: 8px;
-  }
-
-}
-
-
-/* =========================================================
-   CELULARES PEQUENOS
-   ========================================================= */
-
-@media (max-width: 480px) {
-
-  .cabecalho-itens {
-    gap: 10px;
-  }
-
-
-  .cabecalho_imagem {
-    width: 55px;
-
-    height: 55px;
-  }
-
-
-  .estudante-icone {
-    width: 40px;
-
-    height: 40px;
-  }
-
-
-  .titulo_site {
-    font-size: 19px;
-  }
-
-
-  .dropbtn {
-    padding: 8px 10px;
-
-    font-size: 13px;
-  }
-
-
-  /* Menu ocupa uma largura confortável */
-
-  .dropdown-content {
-    min-width: 180px;
-  }
-
-
-  /* Galeria vira uma coluna */
-
-  .estudantes_todos {
-    grid-template-columns: 1fr;
-
-    max-width: 400px;
-
-    gap: 15px;
-  }
-
-
-  .estudante_titulo {
-    font-size: 25px;
-  }
-
-
-  /* Rodapé */
-
-  .escola {
-    padding: 40px 15px;
-  }
-
-
-  .escola-título {
-    font-size: 18px;
-  }
-
-}
-
-
-/* =========================================================
-   ANIMAÇÃO SUAVE
-   ========================================================= */
-
-@keyframes aparecer {
-
-  from {
-    opacity: 0;
-
-    transform: translateY(15px);
-  }
-
-  to {
-    opacity: 1;
-
-    transform: translateY(0);
-  }
-
-}
-
-
-.sobre-mim,
-.estudante,
-.video-youtube-container {
-  animation: aparecer 0.7s ease;
 }

@@ -1,148 +1,432 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | Pagina Pessoal</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* Estilo para tornar o vídeo do YouTube responsivo e centralizado */
-    .video-youtube-container {
-      padding: 40px 20px;
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%; /* Proporção 16:9 */
-      height: 0;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
 
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-  </style>
+  <title>Home | Página Pessoal</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Fonte Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
 
+  <!-- =====================================================
+       CABEÇALHO
+       ===================================================== -->
+
   <header class="cabecalho-itens">
-  <img class="cabecalho_imagem" src="foto cabelo matheus.png.jpg" alt="Matheus">
 
-  <h1 class="titulo_site">Matheus do Campo Valente</h1>
+    <!-- Foto -->
+    <img
+      class="cabecalho_imagem"
+      src="foto cabelo matheus.png.jpg"
+      alt="Foto de Matheus"
+    >
 
-  <!-- MENU DROPDOWN -->
-  <div class="dropdown">
-    <button class="dropbtn">☰ Menu</button>
+    <!-- Nome -->
+    <h1 class="titulo_site">
+      Matheus do Campo Valente
+    </h1>
 
-    <div class="dropdown-content">
-      <a href="#sobre">Sobre mim</a>
-      <a href="#fotos">Minhas fotos</a>
-      <a href="#video">Vídeo</a>
-      <a href="#contato">Contato</a>
+
+    <!-- =================================================
+         MENU DROPDOWN
+         ================================================= -->
+
+    <div class="dropdown">
+
+      <button class="dropbtn">
+        ☰ Menu
+      </button>
+
+      <div class="dropdown-content">
+
+        <a href="#sobre">
+          Sobre mim
+        </a>
+
+        <a href="#fotos">
+          Minhas fotos
+        </a>
+
+        <a href="#video">
+          Vídeo
+        </a>
+
+        <a href="#contato">
+          Contato
+        </a>
+
+      </div>
+
     </div>
-  </div>
 
-  <div class="sociais">
-    <a href="https://www.instagram.com/valente_matheus/" target="_blank" rel="noopener noreferrer">
-      <img class="estudante-icone" src="logo insta roxo.png.jpg" alt="link do instagram">
-    </a>
-  </div>
-</header>
 
+    <!-- =================================================
+         INSTAGRAM
+         ================================================= -->
+
+    <div class="sociais">
+
+      <a
+        href="https://www.instagram.com/valente_matheus/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+
+        <img
+          class="estudante-icone"
+          src="logo insta roxo.png.jpg"
+          alt="Instagram de Matheus"
+        >
+
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       BANNER
+       ===================================================== -->
 
   <section class="banner1">
-    <img class="escola.image" src="banner.png.jpg" alt="Banner">
+
+    <img
+      class="banner-imagem"
+      src="banner.png.jpg"
+      alt="Banner da página pessoal"
+    >
+
   </section>
 
-  <section class="sobre-mim" style="padding: 40px 20px; text-align: center; max-width: 800px; margin: 0 auto;">
-    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Um pouco sobre quem sou</h2>
-    <p style="font-size: 1.2rem; line-height: 1.6;">
-      Meu nome é Matheus, sou estudante do Colégio Professor Júlio Szymanski e estou atualmente cursando o curso de Desenvolvimento de Sistemas no 2º ano do Ensino Médio. Sou um menino que gosto muito de bicicletas, portanto, várias vezes ao ano estou andando por aí com amigos e logo abaixo vocês iram ver alguns momentos da minha vida.
+
+  <!-- =====================================================
+       SOBRE MIM
+       ===================================================== -->
+
+  <section
+    id="sobre"
+    class="sobre-mim"
+  >
+
+    <h2>
+      Um pouco sobre quem sou
+    </h2>
+
+    <p>
+      Meu nome é Matheus, sou estudante do Colégio Professor Júlio
+      Szymanski e estou atualmente cursando o curso de Desenvolvimento
+      de Sistemas no 2º ano do Ensino Médio.
+
+      Sou um menino que gosto muito de bicicletas, portanto, várias
+      vezes ao ano estou andando por aí com amigos e logo abaixo vocês
+      irão ver alguns momentos da minha vida.
     </p>
+
   </section>
 
-  <section class="estudante">
-    <h1 class="estudante_titulo">Matheus Valente</h1>
-   
+
+  <!-- =====================================================
+       GALERIA
+       ===================================================== -->
+
+  <section
+    id="fotos"
+    class="estudante"
+  >
+
+    <h2 class="estudante_titulo">
+      Matheus Valente
+    </h2>
+
+
     <div class="estudantes_todos">
-      
-      <div class="estudante-div">
-        <img class="estudante-imagem" src="cavalo.png.jpg" alt="Cavalo">
-        <h3 class="estudante-nome">Cavalgada</h3>
-      </div>
+
+
+      <!-- FOTO 1 -->
 
       <div class="estudante-div">
-        <img class="estudante-imagem" src="editada.jpg" alt="grau">
-        <h3 class="estudante-nome">Grau</h3>
+
+        <img
+          class="estudante-imagem"
+          src="cavalo.png.jpg"
+          alt="Matheus em uma cavalgada"
+        >
+
+        <h3 class="estudante-nome">
+          Cavalgada
+        </h3>
+
       </div>
 
-      <div class="estudante-div">
-        <img class="estudante-imagem" src="bonee2.webp" alt="?">
-        <h3 class="estudante-nome">?</h3>
-      </div>
+
+      <!-- FOTO 2 -->
 
       <div class="estudante-div">
-        <img class="estudante-imagem" src="vikingx tuff300.jpg" alt="Vikingx">
-        <h3 class="estudante-nome">Vikingx</h3>
+
+        <img
+          class="estudante-imagem"
+          src="editada.jpg"
+          alt="Matheus andando de bicicleta"
+        >
+
+        <h3 class="estudante-nome">
+          Grau
+        </h3>
+
       </div>
 
-      <div class="estudante-div">
-        <img class="estudante-imagem" src="pe no banco.webp" alt="46">
-        <h3 class="estudante-nome">46</h3>
-      </div>
+
+      <!-- FOTO 3 -->
 
       <div class="estudante-div">
-        <img class="estudante-imagem" src="matheus criança.png.jpg" alt="Eu">
-        <h3 class="estudante-nome">Eu</h3>
+
+        <img
+          class="estudante-imagem"
+          src="bonee2.webp"
+          alt="Momento pessoal"
+        >
+
+        <h3 class="estudante-nome">
+          ?
+        </h3>
+
       </div>
 
-      <div class="estudante-div">
-        <img class="estudante-imagem" src="kadett.jpg" alt="conquista">
-        <h3 class="estudante-nome">conquista</h3>
-      </div>
+
+      <!-- FOTO 4 -->
 
       <div class="estudante-div">
-        <video class="video" controls autoplay muted loop playsinline>
-          <source src="suicida.mp4" type="video/mp4">
+
+        <img
+          class="estudante-imagem"
+          src="vikingx tuff300.jpg"
+          alt="Vikingx"
+        >
+
+        <h3 class="estudante-nome">
+          Vikingx
+        </h3>
+
+      </div>
+
+
+      <!-- FOTO 5 -->
+
+      <div class="estudante-div">
+
+        <img
+          class="estudante-imagem"
+          src="pe no banco.webp"
+          alt="Foto 46"
+        >
+
+        <h3 class="estudante-nome">
+          46
+        </h3>
+
+      </div>
+
+
+      <!-- FOTO 6 -->
+
+      <div class="estudante-div">
+
+        <img
+          class="estudante-imagem"
+          src="matheus criança.png.jpg"
+          alt="Matheus criança"
+        >
+
+        <h3 class="estudante-nome">
+          Eu
+        </h3>
+
+      </div>
+
+
+      <!-- FOTO 7 -->
+
+      <div class="estudante-div">
+
+        <img
+          class="estudante-imagem"
+          src="kadett.jpg"
+          alt="Conquista"
+        >
+
+        <h3 class="estudante-nome">
+          Conquista
+        </h3>
+
+      </div>
+
+
+      <!-- VÍDEO 1 -->
+
+      <div class="estudante-div">
+
+        <video
+          class="video"
+          controls
+          autoplay
+          muted
+          loop
+          playsinline
+        >
+
+          <source
+            src="suicida.mp4"
+            type="video/mp4"
+          >
+
           Seu navegador não suporta vídeos.
+
         </video>
+
       </div>
 
+
+      <!-- VÍDEO 2 -->
+
       <div class="estudante-div">
-        <video class="video" controls autoplay muted loop playsinline>
-          <source src="suicida2.mp4" type="video/mp4">
+
+        <video
+          class="video"
+          controls
+          autoplay
+          muted
+          loop
+          playsinline
+        >
+
+          <source
+            src="suicida2.mp4"
+            type="video/mp4"
+          >
+
           Seu navegador não suporta vídeos.
+
         </video>
+
       </div>
+
 
     </div>
+
   </section>
 
-  <section class="video-youtube-container">
+
+  <!-- =====================================================
+       YOUTUBE
+       ===================================================== -->
+
+  <section
+    id="video"
+    class="video-youtube-container"
+  >
+
+    <h2>
+      Vídeo
+    </h2>
+
     <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/7ewUbj9v3s8?si=_VlaHy7mvl5p7PgD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+      <iframe
+        src="https://www.youtube.com/embed/7ewUbj9v3s8"
+        title="Vídeo do YouTube"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+
     </div>
+
   </section>
 
-  <footer class="escola">
-    <div class="container-mapa" style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 15px;">
-      <img class="logo_rodape" src="mini ponto.png.jpg" alt="Logo da Escola" style="margin: 0;">
-      <a href="https://maps.google.com/?q=Rua+Juliana+Fortes+de+Godoi,+23+-+Costeira,+Araucária+-+PR" target="_blank" rel="noopener noreferrer" class="link-mapa" style="color: #00BFFF; text-decoration: underline; font-weight: bold;">Ver no Google Maps</a>
+
+  <!-- =====================================================
+       RODAPÉ
+       ===================================================== -->
+
+  <footer
+    id="contato"
+    class="escola"
+  >
+
+    <!-- Localização -->
+
+    <div class="container-mapa">
+
+      <img
+        class="logo_rodape"
+        src="mini ponto.png.jpg"
+        alt="Localização"
+      >
+
+      <a
+        href="https://maps.google.com/?q=Rua+Juliana+Fortes+de+Godoi,+23+-+Costeira,+Araucária+-+PR"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="link-mapa"
+      >
+        Ver no Google Maps
+      </a>
+
     </div>
-    <h2 class="escola-título">Mais informações entre em contato<a class="link" href="https://wa.me/5541998583383"> 41 9.9858-3383 </a></h2>
-    <p>©2026 | Curso de DS | Todos os Direitos Reservados. <br>
-    Política de Privacidade | Proteção de dados | Encarregado de dados | <br>
-    Localização Araucaria-pr | Costeira rua juliana N23</p>
+
+
+    <!-- Contato -->
+
+    <h2 class="escola-título">
+
+      Mais informações entre em contato
+
+      <a
+        class="link"
+        href="https://wa.me/5541998583383"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        41 9.9858-3383
+      </a>
+
+    </h2>
+
+
+    <!-- Informações -->
+
+    <p>
+
+      ©2026 | Curso de DS | Todos os Direitos Reservados.
+
+      <br>
+
+      Política de Privacidade |
+      Proteção de dados |
+      Encarregado de dados
+
+      <br>
+
+      Localização: Araucária - PR |
+      Costeira |
+      Rua Juliana N°23
+
+    </p>
+
   </footer>
 
+
 </body>
+
 </html>
