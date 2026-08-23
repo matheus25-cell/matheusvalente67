@@ -1,178 +1,426 @@
+/* =========================
+   CORES DO SITE
+   ========================= */
+
 :root{
-  --fundo:#0B0C10;
-  --roxo:#7B2CBF;
-  --azul:#00E5FF;
-  --branco:#fff;
-  --cinza:#A0A5B5;
+
+  --fundo: #0B0C10;
+
+  --roxo: #7B2CBF;
+
+  --azul: #00E5FF;
+
+  --branco: #FFFFFF;
+
+  --cinza: #A0A5B5;
+
 }
+
+
+/* =========================
+   CONFIGURAÇÕES GERAIS
+   ========================= */
 
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+
+  margin: 0;
+
+  padding: 0;
+
+  box-sizing: border-box;
+
 }
+
+
+html{
+
+  scroll-behavior: smooth;
+
+}
+
 
 body{
-  font-family:Poppins,sans-serif;
-  background:var(--fundo);
-  color:var(--branco);
+
+  font-family: "Poppins", sans-serif;
+
+  background: var(--fundo);
+
+  color: var(--branco);
+
 }
 
-/* CABEÇALHO */
+
+/* =========================
+   CABEÇALHO
+   ========================= */
 
 .cabecalho{
-  padding:20px;
-  border-bottom:1px solid #7b2cbf33;
+
+  padding: 20px;
+
+  border-bottom: 1px solid #7b2cbf33;
+
 }
+
 
 .itens-cabecalho{
-  max-width:1200px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
+
+  max-width: 1200px;
+
+  margin: auto;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
 }
+
+
+/* Foto */
 
 .imagem-cabecalho{
-  width:75px;
-  height:75px;
-  object-fit:cover;
-  border-radius:50%;
-  border:2px solid var(--roxo);
+
+  width: 80px;
+
+  height: 80px;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+
+  border: 2px solid var(--roxo);
+
 }
+
+
+/* Título */
 
 .titulo-site{
-  flex:1;
-  text-align:center;
-  color:var(--azul);
+
+  flex: 1;
+
+  text-align: center;
+
+  font-size: 28px;
+
+  color: var(--azul);
+
 }
 
-/* MENU */
 
-.menu{
-  position:relative;
-}
-
-.botao-menu{
-  padding:10px 15px;
-  background:none;
-  color:var(--azul);
-  border:1px solid var(--roxo);
-  border-radius:6px;
-  cursor:pointer;
-}
-
-.conteudo-menu{
-  display:none;
-  position:absolute;
-  right:0;
-  background:#11131a;
-  min-width:190px;
-  z-index:10;
-}
-
-.conteudo-menu a{
-  display:block;
-  padding:12px;
-  color:white;
-  text-decoration:none;
-}
-
-.conteudo-menu a:hover{
-  background:var(--roxo);
-}
-
-.menu:hover .conteudo-menu{
-  display:block;
-}
-
-/* INSTAGRAM */
+/* Instagram */
 
 .icone-instagram{
-  width:50px;
-  border-radius:50%;
+
+  width: 52px;
+
+  border-radius: 50%;
+
 }
 
-/* BANNER */
+
+/* =========================
+   MENU
+   ========================= */
+
+.menu{
+
+  position: relative;
+
+}
+
+
+.botao-menu{
+
+  padding: 10px 16px;
+
+  background: transparent;
+
+  color: var(--azul);
+
+  border: 1px solid var(--roxo);
+
+  border-radius: 6px;
+
+  font-size: 15px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+}
+
+
+.botao-menu:hover{
+
+  background: var(--roxo);
+
+  color: var(--branco);
+
+}
+
+
+/* Conteúdo do menu */
+
+.conteudo-menu{
+
+  display: none;
+
+  position: absolute;
+
+  right: 0;
+
+  top: 100%;
+
+  min-width: 200px;
+
+  background: #11131A;
+
+  border: 1px solid var(--roxo);
+
+  border-radius: 7px;
+
+  overflow: hidden;
+
+  z-index: 100;
+
+}
+
+
+/* Links */
+
+.conteudo-menu a{
+
+  display: block;
+
+  padding: 12px 16px;
+
+  color: var(--branco);
+
+  text-decoration: none;
+
+}
+
+
+.conteudo-menu a:hover{
+
+  background: var(--roxo);
+
+}
+
+
+/* Mostrar menu */
+
+.menu:hover .conteudo-menu{
+
+  display: block;
+
+}
+
+
+/* =========================
+   BANNER
+   ========================= */
 
 .banner{
-  text-align:center;
+
+  display: flex;
+
+  justify-content: center;
+
 }
+
 
 .banner img{
-  max-width:100%;
+
+  max-width: 100%;
+
+  height: auto;
+
+  display: block;
+
 }
 
-/* TEXTO DA PÁGINA */
 
-.pagina-inicial,
-.area-video{
-  max-width:900px;
-  margin:auto;
-  padding:50px 20px;
-  text-align:center;
+/* =========================
+   PÁGINA INICIAL
+   ========================= */
+
+.pagina-inicial{
+
+  max-width: 900px;
+
+  margin: auto;
+
+  padding: 60px 20px;
+
+  text-align: center;
+
 }
 
-.pagina-inicial h2,
-.area-video h2{
-  color:var(--azul);
-  margin-bottom:20px;
+
+.pagina-inicial h2{
+
+  color: var(--azul);
+
+  margin-bottom: 20px;
+
+  font-size: 30px;
+
 }
+
 
 .pagina-inicial p{
-  color:var(--cinza);
-  line-height:1.7;
-  margin:10px;
+
+  color: var(--cinza);
+
+  line-height: 1.8;
+
+  margin-bottom: 15px;
+
 }
 
-/* VÍDEO */
+
+/* =========================
+   VÍDEO DO YOUTUBE
+   ========================= */
+
+.area-video{
+
+  max-width: 900px;
+
+  margin: auto;
+
+  padding: 50px 20px;
+
+  text-align: center;
+
+}
+
+
+.area-video h2{
+
+  color: var(--azul);
+
+  margin-bottom: 20px;
+
+}
+
 
 .video-responsivo{
-  position:relative;
-  padding-bottom:56.25%;
-  height:0;
-  overflow:hidden;
-  border-radius:10px;
+
+  position: relative;
+
+  width: 100%;
+
+  padding-bottom: 56.25%;
+
+  height: 0;
+
+  overflow: hidden;
+
+  border-radius: 10px;
+
+  box-shadow: 0 0 20px #7b2cbf44;
+
 }
+
 
 .video-responsivo iframe{
-  position:absolute;
-  width:100%;
-  height:100%;
-  border:0;
+
+  position: absolute;
+
+  width: 100%;
+
+  height: 100%;
+
+  top: 0;
+
+  left: 0;
+
+  border: 0;
+
 }
 
-/* RODAPÉ */
+
+/* =========================
+   RODAPÉ
+   ========================= */
 
 .rodape{
-  padding:40px 20px;
-  text-align:center;
-  color:var(--cinza);
-  border-top:1px solid #7b2cbf33;
+
+  padding: 40px 20px;
+
+  text-align: center;
+
+  color: var(--cinza);
+
+  border-top: 1px solid #7b2cbf33;
+
+  line-height: 1.8;
+
 }
 
-/* CELULAR */
 
-@media(max-width:600px){
+/* =========================
+   CELULAR
+   ========================= */
+
+@media(max-width: 768px){
 
   .itens-cabecalho{
-    flex-wrap:wrap;
+
+    flex-wrap: wrap;
+
   }
+
 
   .titulo-site{
-    order:3;
-    flex-basis:100%;
-    font-size:21px;
+
+    order: 3;
+
+    flex-basis: 100%;
+
+    font-size: 22px;
+
   }
+
 
   .imagem-cabecalho{
-    width:60px;
-    height:60px;
+
+    width: 60px;
+
+    height: 60px;
+
   }
 
+
   .icone-instagram{
-    width:42px;
+
+    width: 45px;
+
+  }
+
+}
+
+
+@media(max-width: 480px){
+
+  .titulo-site{
+
+    font-size: 19px;
+
+  }
+
+
+  .botao-menu{
+
+    padding: 8px 12px;
+
   }
 
 }
