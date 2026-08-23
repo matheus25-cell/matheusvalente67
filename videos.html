@@ -15,6 +15,9 @@
 
 <body>
 
+
+<!-- CABEÇALHO -->
+
 <header>
 
   <div class="cabecalho-itens">
@@ -22,35 +25,54 @@
     <img
       class="cabecalho_imagem"
       src="foto cabelo matheus.png.jpg"
-      alt="Matheus"
+      alt="Foto de Matheus"
     >
 
     <h1 class="titulo_site">
       Meus Vídeos
     </h1>
 
-    <div class="dropdown">
 
-      <button class="dropbtn">
+    <!-- MENU INTERATIVO -->
+
+    <details class="dropdown">
+
+      <summary class="dropbtn">
         ☰ Menu
-      </button>
+      </summary>
 
       <div class="dropdown-content">
 
-        <a href="index.html">🏠 Início</a>
-        <a href="sobre.html">👤 Sobre mim</a>
-        <a href="fotos.html">📸 Minhas fotos</a>
-        <a href="videos.html">🎬 Meus vídeos</a>
-        <a href="contato.html">📞 Meu contato</a>
+        <a href="index.html">
+          🏠 Início
+        </a>
+
+        <a href="sobre.html">
+          👤 Sobre mim
+        </a>
+
+        <a href="fotos.html">
+          📸 Minhas fotos
+        </a>
+
+        <a href="videos.html">
+          🎬 Meus vídeos
+        </a>
+
+        <a href="contato.html">
+          📞 Meu contato
+        </a>
 
       </div>
 
-    </div>
+    </details>
 
   </div>
 
 </header>
 
+
+<!-- VÍDEOS -->
 
 <section class="estudante">
 
@@ -61,6 +83,8 @@
 
   <div class="estudantes_todos">
 
+
+    <!-- VÍDEO 1 -->
 
     <div class="estudante-div">
 
@@ -77,6 +101,8 @@
           type="video/mp4"
         >
 
+        Seu navegador não suporta vídeos.
+
       </video>
 
       <h3 class="estudante-nome">
@@ -85,6 +111,8 @@
 
     </div>
 
+
+    <!-- VÍDEO 2 -->
 
     <div class="estudante-div">
 
@@ -101,6 +129,8 @@
           type="video/mp4"
         >
 
+        Seu navegador não suporta vídeos.
+
       </video>
 
       <h3 class="estudante-nome">
@@ -110,6 +140,8 @@
     </div>
 
 
+    <!-- VÍDEO DO YOUTUBE -->
+
     <div class="estudante-div">
 
       <div class="video-wrapper">
@@ -117,6 +149,7 @@
         <iframe
           src="https://www.youtube.com/embed/7ewUbj9v3s8"
           title="Vídeo do YouTube"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen>
         </iframe>
 
@@ -134,6 +167,8 @@
 </section>
 
 
+<!-- RODAPÉ -->
+
 <footer class="escola">
 
   <p>
@@ -142,28 +177,60 @@
 
 </footer>
 
+
 </body>
 </html>
+CSS do menu
+No seu style.css, deixe esta parte:
 
+.dropdown{
+  position:relative;
+}
 
-<details class="dropdown">
+.dropbtn{
+  list-style:none;
+  padding:12px 18px;
+  background:#11131a;
+  color:#00E5FF;
+  border:1px solid #7B2CBF;
+  border-radius:8px;
+  cursor:pointer;
+  transition:.3s;
+}
 
-  <summary class="dropbtn">
-    ☰ Menu
-  </summary>
+.dropbtn::-webkit-details-marker{
+  display:none;
+}
 
-  <div class="dropdown-content">
+.dropbtn:hover{
+  background:#7B2CBF;
+  color:white;
+  box-shadow:0 0 15px #7B2CBF;
+}
 
-    <a href="index.html">🏠 Início</a>
+.dropdown-content{
+  position:absolute;
+  right:0;
+  top:55px;
+  width:210px;
+  background:#11131a;
+  border:1px solid #7B2CBF;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 5px 20px #000;
+  z-index:100;
+}
 
-    <a href="sobre.html">👤 Sobre mim</a>
+.dropdown-content a{
+  display:block;
+  padding:14px;
+  color:white;
+  text-decoration:none;
+  transition:.2s;
+}
 
-    <a href="fotos.html">📸 Minhas fotos</a>
-
-    <a href="videos.html">🎬 Meus vídeos</a>
-
-    <a href="contato.html">📞 Meu contato</a>
-
-  </div>
-
-</details>
+.dropdown-content a:hover{
+  background:#7B2CBF;
+  color:#00E5FF;
+  padding-left:22px;
+}
