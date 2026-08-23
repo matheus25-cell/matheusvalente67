@@ -1,9 +1,9 @@
 :root{
-  --bg:#0B0C10;
-  --purple:#7B2CBF;
-  --blue:#00E5FF;
-  --white:#fff;
-  --gray:#A0A5B5;
+  --fundo:#0B0C10;
+  --roxo:#7B2CBF;
+  --azul:#00E5FF;
+  --branco:#fff;
+  --cinza:#A0A5B5;
 }
 
 *{
@@ -12,24 +12,20 @@
   box-sizing:border-box;
 }
 
-html{
-  scroll-behavior:smooth;
-}
-
 body{
-  font-family:"Poppins",sans-serif;
-  background:var(--bg);
-  color:var(--white);
+  font-family:Poppins,sans-serif;
+  background:var(--fundo);
+  color:var(--branco);
 }
 
 /* CABEÇALHO */
 
-header{
+.cabecalho{
   padding:20px;
   border-bottom:1px solid #7b2cbf33;
 }
 
-.cabecalho-itens{
+.itens-cabecalho{
   max-width:1200px;
   margin:auto;
   display:flex;
@@ -38,383 +34,145 @@ header{
   gap:20px;
 }
 
-.cabecalho_imagem{
-  width:80px;
-  height:80px;
+.imagem-cabecalho{
+  width:75px;
+  height:75px;
   object-fit:cover;
   border-radius:50%;
-  border:2px solid var(--purple);
+  border:2px solid var(--roxo);
 }
 
-.titulo_site{
+.titulo-site{
   flex:1;
   text-align:center;
-  font-size:28px;
-  color:var(--blue);
-}
-
-.estudante-icone{
-  width:52px;
-  border-radius:50%;
+  color:var(--azul);
 }
 
 /* MENU */
 
-.dropdown{
+.menu{
   position:relative;
 }
 
-.dropbtn{
-  padding:10px 16px;
+.botao-menu{
+  padding:10px 15px;
   background:none;
-  color:var(--blue);
-  border:1px solid var(--purple);
+  color:var(--azul);
+  border:1px solid var(--roxo);
   border-radius:6px;
-  font-weight:bold;
   cursor:pointer;
 }
 
-.dropbtn:hover{
-  background:var(--purple);
-  color:white;
-}
-
-.dropdown-content{
+.conteudo-menu{
   display:none;
   position:absolute;
   right:0;
-  top:calc(100% + 6px);
-  min-width:200px;
   background:#11131a;
-  border:1px solid var(--purple);
-  border-radius:7px;
-  overflow:hidden;
+  min-width:190px;
   z-index:10;
 }
 
-.dropdown-content a{
+.conteudo-menu a{
   display:block;
-  padding:12px 16px;
+  padding:12px;
   color:white;
   text-decoration:none;
 }
 
-.dropdown-content a:hover{
-  background:var(--purple);
+.conteudo-menu a:hover{
+  background:var(--roxo);
 }
 
-.dropdown:hover .dropdown-content{
+.menu:hover .conteudo-menu{
   display:block;
+}
+
+/* INSTAGRAM */
+
+.icone-instagram{
+  width:50px;
+  border-radius:50%;
 }
 
 /* BANNER */
 
-.banner1{
-  display:flex;
-  justify-content:center;
+.banner{
+  text-align:center;
 }
 
-.banner1 img{
+.banner img{
   max-width:100%;
-  height:auto;
 }
 
-/* SOBRE */
+/* TEXTO DA PÁGINA */
 
-.sobre-mim{
+.pagina-inicial,
+.area-video{
   max-width:900px;
   margin:auto;
   padding:50px 20px;
   text-align:center;
 }
 
-.sobre-mim h2{
+.pagina-inicial h2,
+.area-video h2{
+  color:var(--azul);
   margin-bottom:20px;
-  color:var(--blue);
 }
 
-.sobre-mim p{
-  color:var(--gray);
-  line-height:1.8;
+.pagina-inicial p{
+  color:var(--cinza);
+  line-height:1.7;
+  margin:10px;
 }
 
-/* GALERIA */
+/* VÍDEO */
 
-.estudante{
-  padding:30px 0;
-}
-
-.estudante_titulo{
-  text-align:center;
-  margin:20px;
-  color:var(--purple);
-}
-
-.estudantes_todos{
-  max-width:1000px;
-  margin:auto;
-  padding:20px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:25px;
-}
-
-.estudante-div{
-  padding:20px;
-  text-align:center;
-  background:#7b2cbf0d;
-  border:1px solid #7b2cbf4d;
-  border-radius:8px;
-  transition:.3s;
-}
-
-.estudante-div:hover{
-  transform:translateY(-5px);
-  border-color:var(--blue);
-  box-shadow:0 0 15px #00e5ff33;
-}
-
-.estudante-imagem,
-.video{
-  width:100%;
-  max-width:220px;
-  height:250px;
-  object-fit:cover;
-  border-radius:5px;
-}
-
-.estudante-nome{
-  margin-top:10px;
-}
-
-/* YOUTUBE */
-
-.video-youtube-container{
-  max-width:900px;
-  margin:auto;
-  padding:40px 20px;
-  text-align:center;
-}
-
-.video-wrapper{
+.video-responsivo{
   position:relative;
   padding-bottom:56.25%;
   height:0;
   overflow:hidden;
-  margin-top:20px;
   border-radius:10px;
 }
 
-.video-wrapper iframe{
+.video-responsivo iframe{
   position:absolute;
   width:100%;
   height:100%;
   border:0;
-  left:0;
-  top:0;
 }
 
 /* RODAPÉ */
 
-.escola{
-  padding:50px 20px;
+.rodape{
+  padding:40px 20px;
   text-align:center;
-  color:var(--gray);
+  color:var(--cinza);
   border-top:1px solid #7b2cbf33;
 }
-
-.container-mapa{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-  margin-bottom:15px;
-}
-
-.logo_rodape{
-  width:50px;
-  height:50px;
-  border-radius:50%;
-}
-
-.link-mapa,
-.link{
-  color:var(--blue);
-  font-weight:bold;
-}
-
-.link{
-  text-decoration:none;
-}
-
-/* CELULAR */
-
-@media(max-width:768px){
-
-  .cabecalho-itens{
-    flex-wrap:wrap;
-  }
-
-  .titulo_site{
-    order:3;
-    flex-basis:100%;
-    font-size:22px;
-  }
-
-  .cabecalho_imagem{
-    width:60px;
-    height:60px;
-  }
-
-  .estudante-icone{
-    width:45px;
-  }
-
-  .estudantes_todos{
-    grid-template-columns:repeat(2,1fr);
-    gap:15px;
-  }
-
-}
-
-@media(max-width:480px){
-
-  .estudantes_todos{
-    grid-template-columns:1fr;
-  }
-
-  .titulo_site{
-    font-size:19px;
-  }
-
-  .container-mapa{
-    flex-direction:column;
-  }
-
-}
-
-/* CONTATO */
-
-.contato{
-  padding:50px 20px;
-  text-align:center;
-  border-top:1px solid #7b2cbf33;
-}
-
-.contato h2{
-  color:var(--blue);
-  margin-bottom:10px;
-}
-
-.contato p{
-  color:var(--gray);
-  margin-bottom:25px;
-}
-
-.contatos{
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  flex-wrap:wrap;
-}
-
-.contato-item{
-  width:200px;
-  padding:18px;
-  border:1px solid var(--purple);
-  border-radius:8px;
-  color:white;
-  text-decoration:none;
-  background:#7b2cbf0d;
-  transition:.3s;
-}
-
-.contato-item span{
-  display:block;
-  margin-top:8px;
-}
-
-.contato-item:hover{
-  transform:translateY(-5px);
-  border-color:var(--blue);
-  box-shadow:0 0 15px #00e5ff33;
-}
-
-.whatsapp:hover{
-  background:#25D366;
-}
-
-.instagram:hover{
-  background:#7B2CBF;
-}
-
-.mapa:hover{
-  background:#0088cc;
-}
-
-
-/* VÍDEO DO YOUTUBE DENTRO DA GALERIA */
-
-.estudante-div .video-wrapper{
-  width:100%;
-  padding-bottom:56.25%;
-  position:relative;
-  overflow:hidden;
-  border-radius:5px;
-}
-
-.estudante-div .video-wrapper iframe{
-  position:absolute;
-  width:100%;
-  height:100%;
-  top:0;
-  left:0;
-  border:0;
-}
-
 
 /* CELULAR */
 
 @media(max-width:600px){
 
-  .contatos{
-    flex-direction:column;
-    align-items:center;
+  .itens-cabecalho{
+    flex-wrap:wrap;
   }
 
-  .contato-item{
-    width:90%;
-    max-width:300px;
+  .titulo-site{
+    order:3;
+    flex-basis:100%;
+    font-size:21px;
   }
 
-}
+  .imagem-cabecalho{
+    width:60px;
+    height:60px;
+  }
 
+  .icone-instagram{
+    width:42px;
+  }
 
-.video-youtube-container{
-  max-width:900px;
-  margin:auto;
-  padding:50px 20px;
-  text-align:center;
-}
-
-.video-youtube-container h2{
-  color:var(--blue);
-  margin-bottom:20px;
-}
-
-.video-wrapper{
-  position:relative;
-  width:100%;
-  padding-bottom:56.25%;
-  overflow:hidden;
-  border-radius:10px;
-}
-
-.video-wrapper iframe{
-  position:absolute;
-  width:100%;
-  height:100%;
-  top:0;
-  left:0;
-  border:0;
 }
