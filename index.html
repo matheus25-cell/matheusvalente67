@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -24,9 +23,9 @@
 
 <!-- CABEÇALHO -->
 
-<header>
+<header style="position: relative;">
 
-  <center class="cabecalho-itens">
+  <div class="cabecalho-itens" style="text-align: center;">
 
     <!-- FOTO DE MATHEUS -->
     <img
@@ -35,13 +34,13 @@
       alt="Foto de Matheus"
     >
 
-    <!-- NOME -->
-    <h1 class="titulo_site">
+    <!-- NOME PRINCIPAL CENTRALIZADO -->
+    <h1 class="titulo_site" style="text-align: center;">
       Matheus do Campo Valente
     </h1>
 
-    <!-- MENU CENTRALIZADO -->
-    <details class="dropdown">
+    <!-- MENU NO CANTO DA TELA (DIREITA) -->
+    <details class="dropdown" style="position: absolute; top: 10px; right: 20px;">
 
       <summary class="dropbtn">
         ☰ Menu
@@ -92,88 +91,74 @@
 
     </div>
 
-  </center>
+  </div>
 
 </header>
 
 
 <!-- BANNER -->
 
-<section class="banner1">
+<section class="banner1" style="text-align: center;">
 
-  <center>
-    <img
-      src="banner4.jpg"
-      alt="Banner da página"
-    >
-  </center>
+  <img
+    src="banner4.jpg"
+    alt="Banner da página"
+  >
 
 </section>
 
 
-<!-- APRESENTAÇÃO COM TEXTOS MAIORES E CENTRALIZADOS -->
+<!-- APRESENTAÇÃO -->
 
-<section class="pagina-inicial">
+<section class="pagina-inicial" style="text-align: center;">
 
-  <center>
+  <h2 style="font-size: 32px;">
+    Bem-vindo ao meu site!
+  </h2>
 
-    <h1>
-      <font size="6">Bem-vindo ao meu site!</font>
-    </h1>
+  <h3 style="font-size: 24px;">
+    Meu nome é Matheus do Campo Valente.
+  </h3>
 
-    <h2>
-      <font size="5">Meu nome é Matheus do Campo Valente.</font>
-    </h2>
-
-    <p>
-      <font size="4">
-        Aqui você pode conhecer um pouco mais sobre mim,
-        ver minhas fotos, meus vídeos e encontrar meus
-        contatos.
-      </font>
-    </p>
-
-  </center>
+  <p style="font-size: 20px;">
+    Aqui você pode conhecer um pouco mais sobre mim,
+    ver minhas fotos, meus vídeos e encontrar meus
+    contatos.
+  </p>
 
 </section>
 
 
 <!-- VÍDEO DO YOUTUBE NO FINAL -->
 
-<section class="video-youtube-container">
+<section class="video-youtube-container" style="text-align: center;">
 
-  <center>
+  <h2 style="font-size: 32px;">
+    Meu vídeo
+  </h2>
 
-    <h2>
-      <font size="6">Meu vídeo</font>
-    </h2>
+  <div class="video-wrapper">
 
-    <div class="video-wrapper">
+    <iframe
+      src="https://www.youtube.com/embed/7ewUbj9v3s8"
+      title="Vídeo do YouTube"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
+    </iframe>
 
-      <iframe
-        src="https://www.youtube.com/embed/7ewUbj9v3s8"
-        title="Vídeo do YouTube"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen>
-      </iframe>
-
-    </div>
-
-  </center>
+  </div>
 
 </section>
 
 
 <!-- RODAPÉ -->
 
-<footer class="escola">
+<footer class="escola" style="text-align: center;">
 
-  <center>
-    <p>
-      © 2026 | Matheus do Campo Valente
-    </p>
-  </center>
+  <p>
+    © 2026 | Matheus do Campo Valente
+  </p>
 
 </footer>
 
