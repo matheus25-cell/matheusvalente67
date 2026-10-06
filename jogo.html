@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Jogo | Matheus Valente</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    body {
+      background-color: #0F111A;
+      color: #FFFFFF;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .secao-jogo-central {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 15px;
+    }
+
+    .cartao-jogo {
+      background: rgba(22, 26, 38, 0.95);
+      border: 1px solid rgba(123, 44, 191, 0.5);
+      border-radius: 20px;
+      padding: 35px 25px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(123, 44, 191, 0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .placar {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      background: rgba(30, 35, 52, 0.8);
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 229, 255, 0.3);
+    }
+
+    .placar span {
+      color: #00E5FF;
+    }
+
+    #canvasJogo {
+      background-color: #090A0F;
+      border: 2px solid #7B2CBF;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(123, 44, 191, 0.4);
+      max-width: 100%;
+      height: auto;
+    }
+
+    .btn-reiniciar {
+      margin-top: 20px;
+      padding: 12px 30px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: linear-gradient(135deg, #7B2CBF, #9D4EDD);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(123, 44, 191, 0.4);
+    }
+
+    .btn-reiniciar:hover {
+      background: linear-gradient(135deg, #00E5FF, #7B2CBF);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 229, 255, 0.4);
+    }
+
+    .controles-mobile {
+      display: grid;
+      grid-template-columns: repeat(3, 60px);
+      grid-template-rows: repeat(2, 50px);
+      gap: 10px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .btn-control {
+      background: rgba(30, 35, 52, 0.9);
+      border: 1px solid #00E5FF;
+      color: #00E5FF;
+      font-size: 1.4rem;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+
+    .btn-control:active {
+      background: #00E5FF;
+      color: #0F111A;
+    }
+
+    .btn-up { grid-column: 2; grid-row: 1; }
+    .btn-left { grid-column: 1; grid-row: 2; }
+    .btn-down { grid-column: 2; grid-row: 2; }
+    .btn-right { grid-column: 3; grid-row: 2; }
+  </style>
+
+</head>
+
+<body>
+
+
+<!-- CABEÇALHO -->
+
+<header>
+
+  <div class="cabecalho-itens" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 10px 20px;">
+
+    <!-- FOTO -->
+    <img
+      class="cabecalho_imagem"
+      src="foto cabelo matheus.png.jpg"
+      alt="Foto de Matheus"
+    >
+
+    <!-- TÍTULO -->
+    <h1 class="titulo_site" style="flex: 1; text-align: center; margin: 0; font-size: 2.8rem; color: #00E5FF;">
+      Jogo Neon
+    </h1>
+
+    <!-- CONTAINER DIREITO (Instagram + Menu) -->
+    <div style="display: flex; align-items: center; gap: 15px;">
+
+      <!-- INSTAGRAM -->
+      <div class="sociais">
+        <a
+          href="https://www.instagram.com/046_valente/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            class="estudante-icone"
+            src="logo insta
