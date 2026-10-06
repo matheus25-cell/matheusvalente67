@@ -6,19 +6,21 @@
   --text-muted: #A0A5B5;    
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body{
+body {
   font-family: "Poppins", sans-serif;
   background-color: var(--bg-space);
   color: var(--text-pure);            
 }
 
-header{
+/* CABEÇALHO */
+
+header {
   background-color: var(--bg-space);
   color: var(--text-pure);
   width: 100%;
@@ -26,34 +28,40 @@ header{
   border-bottom: 1px solid rgba(123, 44, 191, 0.2);
 }
 
-.cabecalho-itens{
+.cabecalho-itens {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 10px 20px;
 }
 
-.cabecalho_imagem{
+.cabecalho_imagem {
   width: 80px;
   height: auto;
 }
 
-.titulo_site{
+.titulo_site {
+  flex: 1;
   text-align: center;
-  font-size: 28px;
+  font-size: 2.8rem;
   color: var(--electric-blue);
+  margin: 0;
 }
 
-.sociais{
+.sociais {
   display: flex;
   justify-content: flex-end;
 }
 
-.estudante-icone{
+.estudante-icone {
   width: 52px;
   height: auto;
 }
+
+/* BANNER */
 
 .banner1 {
   display: flex;
@@ -67,19 +75,45 @@ header{
   height: auto;
 }
 
-.estudante_titulo{
+/* APRESENTAÇÃO / PÁGINA INICIAL */
+
+.pagina-inicial {
+  text-align: center;
+  margin: 0 auto;
+  padding: 50px 20px;
+  max-width: 900px;
+}
+
+.pagina-inicial h2 {
+  font-size: 2.6rem;
+  color: var(--electric-blue);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.pagina-inicial p {
+  font-size: 1.5rem;
+  color: var(--text-pure);
+  line-height: 1.6;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* SEÇÃO DE ESTUDANTES / GALERIA */
+
+.estudante_titulo {
   padding: 40px 0 20px 0;
   text-align: center;
   font-size: 32px;
   color: var(--neon-purple);
 }
 
-.estudante{
+.estudante {
   background-color: var(--bg-space);
   padding: 24px 0;
 }
 
-.estudantes_todos{
+.estudantes_todos {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
@@ -88,7 +122,7 @@ header{
   padding: 20px;
 }
 
-.estudante-div{
+.estudante-div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -107,19 +141,13 @@ header{
   box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
 }
 
-.estudante-nome{
+.estudante-nome {
   margin-top: 10px;
   font-size: 18px;
   color: var(--text-pure);
 }
 
-.estudante-imagem{
-  width: 100%;
-  max-width: 180px;
-  height: auto;
-  border-radius: 4px;
-}
-
+.estudante-imagem,
 .video {
   width: 100%;
   max-width: 180px;
@@ -127,25 +155,199 @@ header{
   border-radius: 4px;
 }
 
-.escola{
+.estudante-div .video-wrapper {
+  width: 100%;
+  padding-bottom: 56.25%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.estudante-div .video-wrapper iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: 0;
+}
+
+/* VÍDEO DO YOUTUBE */
+
+.video-youtube-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.video-youtube-container h2 {
+  font-size: 2.6rem;
+  color: var(--electric-blue);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(123, 44, 191, 0.3);
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: 0;
+}
+
+/* CONTATO */
+
+.contato {
+  padding: 50px 20px;
+  text-align: center;
+  border-top: 1px solid rgba(123, 44, 191, 0.2);
+}
+
+.contato h2 {
+  color: var(--electric-blue);
+  margin-bottom: 10px;
+}
+
+.contato p {
+  color: var(--text-muted);
+  margin-bottom: 25px;
+}
+
+.contatos {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.contato-item {
+  width: 200px;
+  padding: 18px;
+  border: 1px solid var(--neon-purple);
+  border-radius: 8px;
+  color: var(--text-pure);
+  text-decoration: none;
+  background: rgba(123, 44, 191, 0.05);
+  transition: 0.3s;
+}
+
+.contato-item span {
+  display: block;
+  margin-top: 8px;
+}
+
+.contato-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--electric-blue);
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+}
+
+.whatsapp:hover {
+  background: #25D366;
+}
+
+.instagram:hover {
+  background: #7B2CBF;
+}
+
+.mapa:hover {
+  background: #0088cc;
+}
+
+/* MENU DROPDOWN */
+
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  list-style: none;
+  padding: 12px 18px;
+  background: #11131a;
+  color: var(--electric-blue);
+  border: 1px solid var(--neon-purple);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: 0.3s;
+}
+
+.dropbtn::-webkit-details-marker {
+  display: none;
+}
+
+.dropbtn:hover {
+  background: var(--neon-purple);
+  color: var(--text-pure);
+  box-shadow: 0 0 15px var(--neon-purple);
+}
+
+.dropdown-content {
+  position: absolute;
+  right: 0;
+  top: 55px;
+  width: 210px;
+  background: #11131a;
+  border: 1px solid var(--neon-purple);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px #000;
+  z-index: 100;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 14px;
+  color: var(--text-pure);
+  font-size: 1.3rem;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.dropdown-content a:hover {
+  background: var(--neon-purple);
+  color: var(--electric-blue);
+  padding-left: 22px;
+}
+
+/* RODAPÉ */
+
+.escola {
   background-color: var(--bg-space);
   color: var(--text-muted);
   padding: 60px 20px;
   text-align: center;
   line-height: 1.6;
+  border-top: 1px solid rgba(123, 44, 191, 0.2);
 }
 
-.escola-titulo{
+.escola p {
+  font-size: 1.3rem;
+  color: var(--text-muted);
+}
+
+.escola-titulo {
   padding: 20px;
   color: var(--neon-purple);
 }
 
-.logo_rodape{
+.logo_rodape {
   height: 60px;
   margin-bottom: 15px;
 }
 
-.link{
+.link {
   color: var(--electric-blue);
   text-decoration: none;
   font-weight: bold;
@@ -157,6 +359,8 @@ header{
   text-shadow: 0 0 8px var(--neon-purple);
 }
 
+/* RESPONSIVIDADE (DISPOSITIVOS MÓVEIS) */
+
 @media (max-width: 768px) {
   .estudantes_todos {
     grid-template-columns: repeat(2, 1fr);
@@ -164,239 +368,14 @@ header{
   }
 }
 
-
-/* CONTATO */
-
-.contato{
-  padding:50px 20px;
-  text-align:center;
-  border-top:1px solid #7b2cbf33;
-}
-
-.contato h2{
-  color:var(--blue);
-  margin-bottom:10px;
-}
-
-.contato p{
-  color:var(--gray);
-  margin-bottom:25px;
-}
-
-.contatos{
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  flex-wrap:wrap;
-}
-
-.contato-item{
-  width:200px;
-  padding:18px;
-  border:1px solid var(--purple);
-  border-radius:8px;
-  color:white;
-  text-decoration:none;
-  background:#7b2cbf0d;
-  transition:.3s;
-}
-
-.contato-item span{
-  display:block;
-  margin-top:8px;
-}
-
-.contato-item:hover{
-  transform:translateY(-5px);
-  border-color:var(--blue);
-  box-shadow:0 0 15px #00e5ff33;
-}
-
-.whatsapp:hover{
-  background:#25D366;
-}
-
-.instagram:hover{
-  background:#7B2CBF;
-}
-
-.mapa:hover{
-  background:#0088cc;
-}
-
-
-/* VÍDEO DO YOUTUBE DENTRO DA GALERIA */
-
-.estudante-div .video-wrapper{
-  width:100%;
-  padding-bottom:56.25%;
-  position:relative;
-  overflow:hidden;
-  border-radius:5px;
-}
-
-.estudante-div .video-wrapper iframe{
-  position:absolute;
-  width:100%;
-  height:100%;
-  top:0;
-  left:0;
-  border:0;
-}
-
-
-/* CELULAR */
-
-@media(max-width:600px){
-
-  .contatos{
-    flex-direction:column;
-    align-items:center;
+@media (max-width: 600px) {
+  .contatos {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .contato-item{
-    width:90%;
-    max-width:300px;
+  .contato-item {
+    width: 90%;
+    max-width: 300px;
   }
-
-}
-
-
-.video-youtube-container{
-  max-width:900px;
-  margin:auto;
-  padding:50px 20px;
-  text-align:center;
-}
-
-.video-youtube-container h2{
-  color:var(--blue);
-  margin-bottom:20px;
-}
-
-.video-wrapper{
-  position:relative;
-  width:100%;
-  padding-bottom:56.25%;
-  overflow:hidden;
-  border-radius:10px;
-}
-
-.video-wrapper iframe{
-  position:absolute;
-  width:100%;
-  height:100%;
-  top:0;
-  left:0;
-  border:0;
-}
-
-
-/* MENU */
-
-.dropdown{
-  position:relative;
-}
-
-.dropbtn{
-  list-style:none;
-  padding:12px 18px;
-  background:#11131a;
-  color:#00E5FF;
-  border:1px solid #7B2CBF;
-  border-radius:8px;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.dropbtn::-webkit-details-marker{
-  display:none;
-}
-
-.dropbtn:hover{
-  background:#7B2CBF;
-  color:white;
-  box-shadow:0 0 15px #7B2CBF;
-}
-
-.dropdown-content{
-  position:absolute;
-  right:0;
-  top:55px;
-  width:210px;
-  background:#11131a;
-  border:1px solid #7B2CBF;
-  border-radius:10px;
-  overflow:hidden;
-  box-shadow:0 5px 20px #000;
-  z-index:100;
-}
-
-.dropdown-content a{
-  display:block;
-  padding:14px;
-  color:white;
-  text-decoration:none;
-  transition:.2s;
-}
-
-.dropdown-content a:hover{
-  background:#7B2CBF;
-  color:#00E5FF;
-  padding-left:22px;
-}
-
-
-/* MENU INTERATIVO */
-
-.dropdown{
-  position:relative;
-}
-
-.dropbtn{
-  list-style:none;
-  padding:12px 18px;
-  background:#11131a;
-  color:#00E5FF;
-  border:1px solid #7B2CBF;
-  border-radius:8px;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.dropbtn::-webkit-details-marker{
-  display:none;
-}
-
-.dropbtn:hover{
-  background:#7B2CBF;
-  color:white;
-  box-shadow:0 0 15px #7B2CBF;
-}
-
-.dropdown-content{
-  position:absolute;
-  right:0;
-  top:55px;
-  width:210px;
-  background:#11131a;
-  border:1px solid #7B2CBF;
-  border-radius:10px;
-  overflow:hidden;
-  box-shadow:0 5px 20px #000;
-  z-index:100;
-}
-
-.dropdown-content a{
-  display:block;
-  padding:14px;
-  color:white;
-  text-decoration:none;
-  transition:.2s;
-}
-
-.dropdown-content a:hover{
-  background:#7B2CBF;
-  color:#00E5FF;
-  padding-left:22px;
 }
