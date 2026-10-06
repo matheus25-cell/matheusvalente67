@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jogo | Matheus Valente</title>
+  <title>Tetris Realista | Matheus Valente</title>
 
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +20,7 @@
     }
 
     .secao-jogo-central {
-      min-height: 80vh;
+      min-height: 85vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -31,26 +31,27 @@
       background: rgba(22, 26, 38, 0.95);
       border: 1px solid rgba(123, 44, 191, 0.5);
       border-radius: 20px;
-      padding: 35px 25px;
-      max-width: 500px;
+      padding: 30px 20px;
+      max-width: 480px;
       width: 100%;
       text-align: center;
       box-shadow: 0 0 25px rgba(123, 44, 191, 0.25);
       display: flex;
       flex-direction: column;
       align-items: center;
+      box-sizing: border-box;
     }
 
     .placar {
       display: flex;
       justify-content: space-around;
       width: 100%;
-      max-width: 400px;
-      margin-bottom: 20px;
-      font-size: 1.2rem;
+      max-width: 320px;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
       font-weight: 600;
       background: rgba(30, 35, 52, 0.8);
-      padding: 12px;
+      padding: 10px;
       border-radius: 12px;
       border: 1px solid rgba(0, 229, 255, 0.3);
       box-sizing: border-box;
@@ -60,22 +61,19 @@
       color: #00E5FF;
     }
 
-    /* Força a visibilidade e o tamanho do Canvas */
-    #canvasJogo {
+    #canvasTetris {
       display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      background-color: #090A0F !important;
-      border: 2px solid #7B2CBF;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(123, 44, 191, 0.4);
+      background-color: #08090E !important;
+      border: 3px solid #7B2CBF;
+      border-radius: 10px;
+      box-shadow: 0 0 25px rgba(123, 44, 191, 0.5);
       max-width: 100%;
       height: auto;
     }
 
     .btn-reiniciar {
-      margin-top: 20px;
-      padding: 12px 30px;
+      margin-top: 15px;
+      padding: 12px 28px;
       font-size: 1.1rem;
       font-weight: 600;
       color: #FFFFFF;
@@ -93,12 +91,13 @@
       box-shadow: 0 6px 20px rgba(0, 229, 255, 0.4);
     }
 
+    /* Botoeira Mobile */
     .controles-mobile {
       display: grid;
-      grid-template-columns: repeat(3, 55px);
+      grid-template-columns: repeat(4, 55px);
       grid-template-rows: repeat(2, 45px);
-      gap: 10px;
-      margin-top: 20px;
+      gap: 8px;
+      margin-top: 15px;
       justify-content: center;
     }
 
@@ -106,8 +105,8 @@
       background: rgba(30, 35, 52, 0.9);
       border: 1px solid #00E5FF;
       color: #00E5FF;
-      font-size: 1.3rem;
-      border-radius: 10px;
+      font-size: 1.2rem;
+      border-radius: 8px;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -120,10 +119,23 @@
       color: #0F111A;
     }
 
-    .btn-up { grid-column: 2; grid-row: 1; }
     .btn-left { grid-column: 1; grid-row: 2; }
     .btn-down { grid-column: 2; grid-row: 2; }
     .btn-right { grid-column: 3; grid-row: 2; }
+    .btn-rotate { grid-column: 2 / span 2; grid-row: 1; width: 100%; }
+    .btn-drop { grid-column: 4; grid-row: 2; }
+
+    .dropdown-content a {
+      color: #FFFFFF !important;
+      background-color: #161A26 !important;
+      padding: 10px 15px;
+      display: block;
+      text-decoration: none;
+    }
+    .dropdown-content a:hover {
+      background-color: #7B2CBF !important;
+      color: #00E5FF !important;
+    }
   </style>
 </head>
 
@@ -136,44 +148,44 @@
     <img class="cabecalho_imagem" src="foto cabelo matheus.png.jpg" alt="Foto de Matheus">
 
     <h1 class="titulo_site" style="flex: 1; text-align: center; margin: 0; font-size: 2.8rem; color: #00E5FF;">
-      Jogo Neon
+      Tetris 3D
     </h1>
 
     <div style="display: flex; align-items: center; gap: 15px;">
-
       <div class="sociais">
         <a href="https://www.instagram.com/046_valente/" target="_blank" rel="noopener noreferrer">
           <img class="estudante-icone" src="logo insta roxo.png.jpg" alt="Instagram de Matheus">
         </a>
       </div>
-
     </div>
+
   </div>
 </header>
 
 <!-- SEÇÃO DO JOGO -->
 <main class="secao-jogo-central">
   <div class="cartao-jogo">
-    <h2 style="font-size: 2.2rem; color: #7B2CBF; margin-top: 0; margin-bottom: 15px;">
-      🐍 Cobrinha Neon
+    <h2 style="font-size: 2.2rem; color: #7B2CBF; margin-top: 0; margin-bottom: 12px;">
+      🎮 Tetris Realista
     </h2>
 
     <div class="placar">
       <div>Pontos: <span id="pontos">0</span></div>
-      <div>Recorde: <span id="recorde">0</span></div>
+      <div>Linhas: <span id="linhas">0</span></div>
     </div>
 
-    <!-- TELA DO JOGO (CANVAS) -->
-    <canvas id="canvasJogo" width="360" height="360"></canvas>
+    <!-- TELA DO JOGO (10 colunas x 20 linhas) -->
+    <canvas id="canvasTetris" width="240" height="480"></canvas>
 
-    <button class="btn-reiniciar" id="btnReiniciar">Reiniciar Jogo</button>
+    <button class="btn-reiniciar" id="btnReiniciar">Novo Jogo</button>
 
-    <!-- BOTOEIRA PARA DISPOSITIVOS MÓVEIS -->
+    <!-- BOTOEIRA PARA CELULAR -->
     <div class="controles-mobile">
-      <button class="btn-control btn-up" id="btnUp">▲</button>
+      <button class="btn-control btn-rotate" id="btnRotate">🔄 Girar</button>
       <button class="btn-control btn-left" id="btnLeft">◄</button>
       <button class="btn-control btn-down" id="btnDown">▼</button>
       <button class="btn-control btn-right" id="btnRight">►</button>
+      <button class="btn-control btn-drop" id="btnDrop">⬇</button>
     </div>
   </div>
 </main>
@@ -185,157 +197,76 @@
   </p>
 </footer>
 
-<!-- SCRIPT DO JOGO -->
+<!-- CÓDIGO DO TETRIS REALISTA -->
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const canvas = document.getElementById("canvasJogo");
+    const canvas = document.getElementById("canvasTetris");
     const ctx = canvas.getContext("2d");
 
-    const tamanhoBloco = 18;
-    const totalBlocos = canvas.width / tamanhoBloco;
+    const COLUNAS = 10;
+    const LINHAS = 20;
+    const TAMANHO_BLOCO = canvas.width / COLUNAS;
 
-    let cobrinha = [{ x: 10, y: 10 }];
-    let comida = { x: 15, y: 15 };
-    let direcao = "RIGHT";
-    let proximaDirecao = "RIGHT";
+    let tabuleiro = Array.from({ length: LINHAS }, () => Array(COLUNAS).fill(0));
     let pontos = 0;
-    let recorde = localStorage.getItem("recordeCobrinha") || 0;
-    let loopJogo;
+    let linhasLimpas = 0;
     let jogoAtivo = true;
+    let timerQueda;
 
-    document.getElementById("recorde").innerText = recorde;
+    // Paleta de Peças com cores base e iluminação 3D
+    const PECAS = [
+      { // I - Cyan
+        formato: [[1, 1, 1, 1]],
+        cor: '#00E5FF', bordaClara: '#E0FFFF', bordaEspecial: '#008B8B'
+      },
+      { // J - Azul
+        formato: [[1, 0, 0], [1, 1, 1]],
+        cor: '#2D62FF', bordaClara: '#80A8FF', bordaEspecial: '#002699'
+      },
+      { // L - Laranja
+        formato: [[0, 0, 1], [1, 1, 1]],
+        cor: '#FF8800', bordaClara: '#FFC480', bordaEspecial: '#995200'
+      },
+      { // O - Amarelo
+        formato: [[1, 1], [1, 1]],
+        cor: '#FFD700', bordaClara: '#FFF099', bordaEspecial: '#998200'
+      },
+      { // S - Verde
+        formato: [[0, 1, 1], [1, 1, 0]],
+        cor: '#00FF66', bordaClara: '#B3FFD1', bordaEspecial: '#00993D'
+      },
+      { // T - Roxo
+        formato: [[0, 1, 0], [1, 1, 1]],
+        cor: '#A100FF', bordaClara: '#E2B3FF', bordaEspecial: '#59008C'
+      },
+      { // Z - Vermelho
+        formato: [[1, 1, 0], [0, 1, 1]],
+        cor: '#FF2A6D', bordaClara: '#FFB3CB', bordaEspecial: '#990033'
+      }
+    ];
 
-    // Teclado
-    document.addEventListener("keydown", (event) => {
-      const tecla = event.key;
-      if ((tecla === "ArrowUp" || tecla === "w" || tecla === "W") && direcao !== "DOWN") proximaDirecao = "UP";
-      if ((tecla === "ArrowDown" || tecla === "s" || tecla === "S") && direcao !== "UP") proximaDirecao = "DOWN";
-      if ((tecla === "ArrowLeft" || tecla === "a" || tecla === "A") && direcao !== "RIGHT") proximaDirecao = "LEFT";
-      if ((tecla === "ArrowRight" || tecla === "d" || tecla === "D") && direcao !== "LEFT") proximaDirecao = "RIGHT";
-    });
+    let pecaAtual = criarPeca();
 
-    // Botões mobile
-    document.getElementById("btnUp").onclick = () => mudarDirecao('UP');
-    document.getElementById("btnDown").onclick = () => mudarDirecao('DOWN');
-    document.getElementById("btnLeft").onclick = () => mudarDirecao('LEFT');
-    document.getElementById("btnRight").onclick = () => mudarDirecao('RIGHT');
-    document.getElementById("btnReiniciar").onclick = () => reiniciarJogo();
-
-    function mudarDirecao(novaDirecao) {
-      if (novaDirecao === "UP" && direcao !== "DOWN") proximaDirecao = "UP";
-      if (novaDirecao === "DOWN" && direcao !== "UP") proximaDirecao = "DOWN";
-      if (novaDirecao === "LEFT" && direcao !== "RIGHT") proximaDirecao = "LEFT";
-      if (novaDirecao === "RIGHT" && direcao !== "LEFT") proximaDirecao = "RIGHT";
-    }
-
-    function gerarComida() {
-      comida = {
-        x: Math.floor(Math.random() * totalBlocos),
-        y: Math.floor(Math.random() * totalBlocos)
+    function criarPeca() {
+      const idx = Math.floor(Math.random() * PECAS.length);
+      const peca = PECAS[idx];
+      return {
+        ...peca,
+        x: Math.floor(COLUNAS / 2) - Math.ceil(peca.formato[0].length / 2),
+        y: 0
       };
-      cobrinha.forEach(segmento => {
-        if (segmento.x === comida.x && segmento.y === comida.y) {
-          gerarComida();
-        }
-      });
     }
 
-    function atualizar() {
-      if (!jogoAtivo) return;
+    // Renderização realista de bloco em 3D
+    function desenharBloco3D(x, y, pecaInfo) {
+      const px = x * TAMANHO_BLOCO;
+      const py = y * TAMANHO_BLOCO;
+      const tam = TAMANHO_BLOCO;
 
-      direcao = proximaDirecao;
-      let cabeca = { ...cobrinha[0] };
+      // Corpo principal
+      ctx.fillStyle = pecaInfo.cor;
+      ctx.fillRect(px, py, tam, tam);
 
-      if (direcao === "UP") cabeca.y -= 1;
-      if (direcao === "DOWN") cabeca.y += 1;
-      if (direcao === "LEFT") cabeca.x -= 1;
-      if (direcao === "RIGHT") cabeca.x += 1;
+      // Borda superior e esquerda (Luz)
 
-      // Colisão paredes
-      if (cabeca.x < 0 || cabeca.x >= totalBlocos || cabeca.y < 0 || cabeca.y >= totalBlocos) {
-        fimDeJogo();
-        return;
-      }
-
-      // Colisão próprio corpo
-      for (let i = 0; i < cobrinha.length; i++) {
-        if (cobrinha[i].x === cabeca.x && cobrinha[i].y === cabeca.y) {
-          fimDeJogo();
-          return;
-        }
-      }
-
-      cobrinha.unshift(cabeca);
-
-      if (cabeca.x === comida.x && cabeca.y === comida.y) {
-        pontos += 10;
-        document.getElementById("pontos").innerText = pontos;
-        if (pontos > recorde) {
-          recorde = pontos;
-          localStorage.setItem("recordeCobrinha", recorde);
-          document.getElementById("recorde").innerText = recorde;
-        }
-        gerarComida();
-      } else {
-        cobrinha.pop();
-      }
-
-      desenhar();
-    }
-
-    function desenhar() {
-      ctx.fillStyle = "#090A0F";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Comida Cyan Neon
-      ctx.fillStyle = "#00E5FF";
-      ctx.shadowBlur = 10;
-      ctx.shadowColor = "#00E5FF";
-      ctx.fillRect(comida.x * tamanhoBloco, comida.y * tamanhoBloco, tamanhoBloco - 2, tamanhoBloco - 2);
-
-      // Cobrinha
-      cobrinha.forEach((segmento, indice) => {
-        ctx.fillStyle = indice === 0 ? "#00E5FF" : "#7B2CBF";
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = ctx.fillStyle;
-        ctx.fillRect(segmento.x * tamanhoBloco, segmento.y * tamanhoBloco, tamanhoBloco - 2, tamanhoBloco - 2);
-      });
-
-      ctx.shadowBlur = 0;
-    }
-
-    function fimDeJogo() {
-      jogoAtivo = false;
-      clearInterval(loopJogo);
-
-      ctx.fillStyle = "rgba(15, 17, 26, 0.88)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = "#FF0055";
-      ctx.font = "bold 24px Poppins";
-      ctx.textAlign = "center";
-      ctx.fillText("FIM DE JOGO!", canvas.width / 2, canvas.height / 2 - 10);
-
-      ctx.fillStyle = "#FFFFFF";
-      ctx.font = "16px Poppins";
-      ctx.fillText("Pontuação: " + pontos, canvas.width / 2, canvas.height / 2 + 25);
-    }
-
-    function reiniciarJogo() {
-      clearInterval(loopJogo);
-      cobrinha = [{ x: 10, y: 10 }];
-      direcao = "RIGHT";
-      proximaDirecao = "RIGHT";
-      pontos = 0;
-      jogoAtivo = true;
-      document.getElementById("pontos").innerText = "0";
-      gerarComida();
-      loopJogo = setInterval(atualizar, 120);
-    }
-
-    reiniciarJogo();
-  });
-</script>
-
-</body>
-</html>
+      <script src="script.js"></script>
