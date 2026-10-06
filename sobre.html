@@ -18,16 +18,12 @@
   >
 
   <style>
-    /* Transição suave ao carregar */
-    @keyframes entradaSuave {
-      from {
-        opacity: 0;
-        transform: translateY(15px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    /* Garante fundo escuro e texto visível */
+    body {
+      background-color: #0F111A;
+      color: #FFFFFF;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
     }
 
     /* Container Centralizador */
@@ -41,14 +37,13 @@
 
     /* Cartão Limpo e Moderno */
     .cartao-sobre {
-      background: rgba(17, 19, 26, 0.85);
-      border: 1px solid rgba(123, 44, 191, 0.4);
+      background: rgba(22, 26, 38, 0.95);
+      border: 1px solid rgba(123, 44, 191, 0.5);
       border-radius: 16px;
       padding: 50px 40px;
       max-width: 900px;
       width: 100%;
       text-align: center;
-      animation: entradaSuave 0.6s ease-out forwards;
     }
 
     /* Destaques em Texto */
@@ -107,8 +102,80 @@
       <!-- MENU INTERATIVO -->
       <details class="dropdown">
 
-        <summary class="dropbtn" style="font-size: 1.5rem;">
+        <summary class="dropbtn" style="font-size: 1.5rem; cursor: pointer; color: #FFFFFF;">
           ☰ Menu
         </summary>
 
-        <div class
+        <div class="dropdown-content">
+
+          <a href="index.html" style="font-size: 1.3rem;">
+            🏠 Início
+          </a>
+
+          <a href="sobre.html" style="font-size: 1.3rem;">
+            👤 Sobre mim
+          </a>
+
+          <a href="fotos.html" style="font-size: 1.3rem;">
+            📸 Minhas fotos
+          </a>
+
+          <a href="videos.html" style="font-size: 1.3rem;">
+            🎬 Meus vídeos
+          </a>
+
+          <a href="contato.html" style="font-size: 1.3rem;">
+            📞 Meu contato
+          </a>
+
+        </div>
+
+      </details>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- SEÇÃO SOBRE MIM -->
+
+<main class="secao-sobre-central">
+
+  <div class="cartao-sobre">
+
+    <h2 style="font-size: 2.8rem; color: #7B2CBF; text-align: center; margin-bottom: 30px;">
+      Quem sou eu
+    </h2>
+
+    <p style="font-size: 1.7rem; line-height: 1.7; color: #FFFFFF; text-align: center; margin-bottom: 20px;">
+      Meu nome é <span class="destaque-neon">Matheus do Campo Valente</span>. Sou estudante no <span class="destaque-roxo">Colégio Estadual Professor Júlio Szymanski</span>, onde estou no 2º ano do Ensino Médio cursando <span class="destaque-neon">Desenvolvimento de Sistemas</span>.
+    </p>
+
+    <p style="font-size: 1.7rem; line-height: 1.7; color: #FFFFFF; text-align: center; margin-bottom: 20px;">
+      Gosto muito do universo da tecnologia e de aprender coisas novas na área de programação. Fora da escola, gosto de andar de bicicleta e passar o tempo com meus amigos.
+    </p>
+
+    <p style="font-size: 1.7rem; line-height: 1.7; color: #FFFFFF; text-align: center;">
+      Criei este site para compartilhar um pouco sobre a minha rotina, publicar minhas fotos e vídeos, além de disponibilizar um canal direto para contato.
+    </p>
+
+  </div>
+
+</main>
+
+
+<!-- RODAPÉ -->
+
+<footer class="escola" style="text-align: center; padding: 40px 20px;">
+
+  <p style="font-size: 1.3rem; text-align: center; color: #FFFFFF;">
+    © 2026 | Matheus do Campo Valente. Todos os direitos reservados.
+  </p>
+
+</footer>
+
+
+</body>
+</html>
