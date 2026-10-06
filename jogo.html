@@ -4,57 +4,82 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tetris Realista | Matheus Valente</title>
+  <title>Tetris 3D | Matheus Valente</title>
 
-  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Carregamento do script.js externo -->
+  <script src="script.js" defer></script>
+
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       background-color: #0F111A;
       color: #FFFFFF;
       margin: 0;
       font-family: 'Poppins', sans-serif;
+      touch-action: manipulation;
+    }
+
+    header {
+      padding: 15px 20px;
+      background: rgba(22, 26, 38, 0.8);
+      border-bottom: 1px solid rgba(123, 44, 191, 0.3);
+    }
+
+    .cabecalho-itens {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .titulo_site {
+      margin: 0;
+      font-size: 2rem;
+      color: #00E5FF;
+      text-align: center;
     }
 
     .secao-jogo-central {
-      min-height: 85vh;
+      min-height: 80vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 30px 15px;
+      padding: 20px 15px;
     }
 
     .cartao-jogo {
       background: rgba(22, 26, 38, 0.95);
       border: 1px solid rgba(123, 44, 191, 0.5);
       border-radius: 20px;
-      padding: 30px 20px;
-      max-width: 480px;
+      padding: 25px 20px;
+      max-width: 400px;
       width: 100%;
       text-align: center;
       box-shadow: 0 0 25px rgba(123, 44, 191, 0.25);
       display: flex;
       flex-direction: column;
       align-items: center;
-      box-sizing: border-box;
     }
 
     .placar {
       display: flex;
       justify-content: space-around;
       width: 100%;
-      max-width: 320px;
       margin-bottom: 15px;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 600;
       background: rgba(30, 35, 52, 0.8);
       padding: 10px;
       border-radius: 12px;
       border: 1px solid rgba(0, 229, 255, 0.3);
-      box-sizing: border-box;
     }
 
     .placar span {
@@ -62,19 +87,19 @@
     }
 
     #canvasTetris {
-      display: block !important;
-      background-color: #08090E !important;
+      display: block;
+      background-color: #08090E;
       border: 3px solid #7B2CBF;
       border-radius: 10px;
-      box-shadow: 0 0 25px rgba(123, 44, 191, 0.5);
+      box-shadow: 0 0 20px rgba(123, 44, 191, 0.4);
       max-width: 100%;
       height: auto;
     }
 
     .btn-reiniciar {
       margin-top: 15px;
-      padding: 12px 28px;
-      font-size: 1.1rem;
+      padding: 10px 24px;
+      font-size: 1rem;
       font-weight: 600;
       color: #FFFFFF;
       background: linear-gradient(135deg, #7B2CBF, #9D4EDD);
@@ -88,13 +113,11 @@
     .btn-reiniciar:hover {
       background: linear-gradient(135deg, #00E5FF, #7B2CBF);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 229, 255, 0.4);
     }
 
-    /* Botoeira Mobile */
     .controles-mobile {
       display: grid;
-      grid-template-columns: repeat(4, 55px);
+      grid-template-columns: repeat(4, 50px);
       grid-template-rows: repeat(2, 45px);
       gap: 8px;
       margin-top: 15px;
@@ -105,13 +128,14 @@
       background: rgba(30, 35, 52, 0.9);
       border: 1px solid #00E5FF;
       color: #00E5FF;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       border-radius: 8px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       user-select: none;
+      -webkit-user-select: none;
     }
 
     .btn-control:active {
@@ -125,61 +149,36 @@
     .btn-rotate { grid-column: 2 / span 2; grid-row: 1; width: 100%; }
     .btn-drop { grid-column: 4; grid-row: 2; }
 
-    .dropdown-content a {
-      color: #FFFFFF !important;
-      background-color: #161A26 !important;
-      padding: 10px 15px;
-      display: block;
-      text-decoration: none;
-    }
-    .dropdown-content a:hover {
-      background-color: #7B2CBF !important;
-      color: #00E5FF !important;
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #888888;
     }
   </style>
 </head>
 
 <body>
 
-<!-- CABEÇALHO -->
 <header>
-  <div class="cabecalho-itens" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 10px 20px;">
-
-    <img class="cabecalho_imagem" src="foto cabelo matheus.png.jpg" alt="Foto de Matheus">
-
-    <h1 class="titulo_site" style="flex: 1; text-align: center; margin: 0; font-size: 2.8rem; color: #00E5FF;">
-      Tetris 3D
-    </h1>
-
-    <div style="display: flex; align-items: center; gap: 15px;">
-      <div class="sociais">
-        <a href="https://www.instagram.com/046_valente/" target="_blank" rel="noopener noreferrer">
-          <img class="estudante-icone" src="logo insta roxo.png.jpg" alt="Instagram de Matheus">
-        </a>
-      </div>
-    </div>
-
+  <div class="cabecalho-itens">
+    <h1 class="titulo_site">Tetris 3D</h1>
   </div>
 </header>
 
-<!-- SEÇÃO DO JOGO -->
 <main class="secao-jogo-central">
   <div class="cartao-jogo">
-    <h2 style="font-size: 2.2rem; color: #7B2CBF; margin-top: 0; margin-bottom: 12px;">
-      🎮 Tetris Realista
-    </h2>
+    <h2 style="font-size: 1.8rem; color: #7B2CBF; margin: 0 0 10px 0;">🎮 Tetris Realista</h2>
 
     <div class="placar">
       <div>Pontos: <span id="pontos">0</span></div>
       <div>Linhas: <span id="linhas">0</span></div>
     </div>
 
-    <!-- TELA DO JOGO (10 colunas x 20 linhas) -->
     <canvas id="canvasTetris" width="240" height="480"></canvas>
 
     <button class="btn-reiniciar" id="btnReiniciar">Novo Jogo</button>
 
-    <!-- BOTOEIRA PARA CELULAR -->
     <div class="controles-mobile">
       <button class="btn-control btn-rotate" id="btnRotate">🔄 Girar</button>
       <button class="btn-control btn-left" id="btnLeft">◄</button>
@@ -190,83 +189,9 @@
   </div>
 </main>
 
-<!-- RODAPÉ -->
-<footer class="escola" style="text-align: center; padding: 40px 20px;">
-  <p style="font-size: 1.3rem; text-align: center; color: #FFFFFF;">
-    © 2026 | Matheus do Campo Valente. Todos os direitos reservados.
-  </p>
+<footer>
+  <p>© 2026 | Matheus do Campo Valente. Todos os direitos reservados.</p>
 </footer>
 
-<!-- CÓDIGO DO TETRIS REALISTA -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const canvas = document.getElementById("canvasTetris");
-    const ctx = canvas.getContext("2d");
-
-    const COLUNAS = 10;
-    const LINHAS = 20;
-    const TAMANHO_BLOCO = canvas.width / COLUNAS;
-
-    let tabuleiro = Array.from({ length: LINHAS }, () => Array(COLUNAS).fill(0));
-    let pontos = 0;
-    let linhasLimpas = 0;
-    let jogoAtivo = true;
-    let timerQueda;
-
-    // Paleta de Peças com cores base e iluminação 3D
-    const PECAS = [
-      { // I - Cyan
-        formato: [[1, 1, 1, 1]],
-        cor: '#00E5FF', bordaClara: '#E0FFFF', bordaEspecial: '#008B8B'
-      },
-      { // J - Azul
-        formato: [[1, 0, 0], [1, 1, 1]],
-        cor: '#2D62FF', bordaClara: '#80A8FF', bordaEspecial: '#002699'
-      },
-      { // L - Laranja
-        formato: [[0, 0, 1], [1, 1, 1]],
-        cor: '#FF8800', bordaClara: '#FFC480', bordaEspecial: '#995200'
-      },
-      { // O - Amarelo
-        formato: [[1, 1], [1, 1]],
-        cor: '#FFD700', bordaClara: '#FFF099', bordaEspecial: '#998200'
-      },
-      { // S - Verde
-        formato: [[0, 1, 1], [1, 1, 0]],
-        cor: '#00FF66', bordaClara: '#B3FFD1', bordaEspecial: '#00993D'
-      },
-      { // T - Roxo
-        formato: [[0, 1, 0], [1, 1, 1]],
-        cor: '#A100FF', bordaClara: '#E2B3FF', bordaEspecial: '#59008C'
-      },
-      { // Z - Vermelho
-        formato: [[1, 1, 0], [0, 1, 1]],
-        cor: '#FF2A6D', bordaClara: '#FFB3CB', bordaEspecial: '#990033'
-      }
-    ];
-
-    let pecaAtual = criarPeca();
-
-    function criarPeca() {
-      const idx = Math.floor(Math.random() * PECAS.length);
-      const peca = PECAS[idx];
-      return {
-        ...peca,
-        x: Math.floor(COLUNAS / 2) - Math.ceil(peca.formato[0].length / 2),
-        y: 0
-      };
-    }
-
-    // Renderização realista de bloco em 3D
-    function desenharBloco3D(x, y, pecaInfo) {
-      const px = x * TAMANHO_BLOCO;
-      const py = y * TAMANHO_BLOCO;
-      const tam = TAMANHO_BLOCO;
-
-      // Corpo principal
-      ctx.fillStyle = pecaInfo.cor;
-      ctx.fillRect(px, py, tam, tam);
-
-      // Borda superior e esquerda (Luz)
-
-      <script src="script.js"></script>
+</body>
+</html>

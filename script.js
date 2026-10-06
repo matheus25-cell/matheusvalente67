@@ -1,5 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
+function inicializarTetris() {
   const canvas = document.getElementById("canvasTetris");
+  if (!canvas) return;
   const ctx = canvas.getContext("2d");
 
   const COLUNAS = 10;
@@ -10,38 +11,16 @@ document.addEventListener("DOMContentLoaded", () => {
   let pontos = 0;
   let linhasLimpas = 0;
   let jogoAtivo = true;
-  let timerQueda;
+  let timerQueda = null;
 
-  // Peças com estilo 3D (cor base, iluminação e sombra)
   const PECAS = [
-    { // I - Cyan
-      formato: [[1, 1, 1, 1]],
-      cor: '#00E5FF', bordaClara: '#E0FFFF', bordaEspecial: '#008B8B'
-    },
-    { // J - Azul
-      formato: [[1, 0, 0], [1, 1, 1]],
-      cor: '#2D62FF', bordaClara: '#80A8FF', bordaEspecial: '#002699'
-    },
-    { // L - Laranja
-      formato: [[0, 0, 1], [1, 1, 1]],
-      cor: '#FF8800', bordaClara: '#FFC480', bordaEspecial: '#995200'
-    },
-    { // O - Amarelo
-      formato: [[1, 1], [1, 1]],
-      cor: '#FFD700', bordaClara: '#FFF099', bordaEspecial: '#998200'
-    },
-    { // S - Verde
-      formato: [[0, 1, 1], [1, 1, 0]],
-      cor: '#00FF66', bordaClara: '#B3FFD1', bordaEspecial: '#00993D'
-    },
-    { // T - Roxo
-      formato: [[0, 1, 0], [1, 1, 1]],
-      cor: '#A100FF', bordaClara: '#E2B3FF', bordaEspecial: '#59008C'
-    },
-    { // Z - Vermelho
-      formato: [[1, 1, 0], [0, 1, 1]],
-      cor: '#FF2A6D', bordaClara: '#FFB3CB', bordaEspecial: '#990033'
-    }
+    { formato: [[1, 1, 1, 1]], cor: '#00E5FF', bordaClara: '#E0FFFF', bordaEspecial: '#008B8B' },
+    { formato: [[1, 0, 0], [1, 1, 1]], cor: '#2D62FF', bordaClara: '#80A8FF', bordaEspecial: '#002699' },
+    { formato: [[0, 0, 1], [1, 1, 1]], cor: '#FF8800', bordaClara: '#FFC480', bordaEspecial: '#995200' },
+    { formato: [[1, 1], [1, 1]], cor: '#FFD700', bordaClara: '#FFF099', bordaEspecial: '#998200' },
+    { formato: [[0, 1, 1], [1, 1, 0]], cor: '#00FF66', bordaClara: '#B3FFD1', bordaEspecial: '#00993D' },
+    { formato: [[0, 1, 0], [1, 1, 1]], cor: '#A100FF', bordaClara: '#E2B3FF', bordaEspecial: '#59008C' },
+    { formato: [[1, 1, 0], [0, 1, 1]], cor: '#FF2A6D', bordaClara: '#FFB3CB', bordaEspecial: '#990033' }
   ];
 
   let pecaAtual = criarPeca();
@@ -56,36 +35,24 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  // Desenho dos blocos com efeito biselado 3D
   function desenharBloco3D(x, y, pecaInfo) {
     const px = x * TAMANHO_BLOCO;
     const py = y * TAMANHO_BLOCO;
     const tam = TAMANHO_BLOCO;
 
-    // Centro
     ctx.fillStyle = pecaInfo.cor;
     ctx.fillRect(px, py, tam, tam);
 
-    // Borda clara (Luz)
     ctx.fillStyle = pecaInfo.bordaClara;
     ctx.beginPath();
-    ctx.moveTo(px, py);
-    ctx.lineTo(px + tam, py);
-    ctx.lineTo(px + tam - 3, py + 3);
-    ctx.lineTo(px + 3, py + 3);
-    ctx.lineTo(px + 3, py + tam - 3);
-    ctx.lineTo(px, py + tam);
+    ctx.moveTo(px, py); ctx.lineTo(px + tam, py); ctx.lineTo(px + tam - 3, py + 3);
+    ctx.lineTo(px + 3, py + 3); ctx.lineTo(px + 3, py + tam - 3); ctx.lineTo(px, py + tam);
     ctx.fill();
 
-    // Borda escura (Sombra)
     ctx.fillStyle = pecaInfo.bordaEspecial;
     ctx.beginPath();
-    ctx.moveTo(px + tam, py);
-    ctx.lineTo(px + tam, py + tam);
-    ctx.lineTo(px, py + tam);
-    ctx.lineTo(px + 3, py + tam - 3);
-    ctx.lineTo(px + tam - 3, py + tam - 3);
-    ctx.lineTo(px + tam - 3, py + 3);
+    ctx.moveTo(px + tam, py); ctx.lineTo(px + tam, py + tam); ctx.lineTo(px, py + tam);
+    ctx.lineTo(px + 3, py + tam - 3); ctx.lineTo(px + tam - 3, py + tam - 3); ctx.lineTo(px + tam - 3, py + 3);
     ctx.fill();
 
     ctx.strokeStyle = 'rgba(0,0,0,0.4)';
@@ -106,18 +73,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     for (let r = 0; r < LINHAS; r++) {
       for (let c = 0; c < COLUNAS; c++) {
-        if (tabuleiro[r][c]) {
-          desenharBloco3D(c, r, tabuleiro[r][c]);
-        }
+        if (tabuleiro[r][c]) desenharBloco3D(c, r, tabuleiro[r][c]);
       }
     }
 
     if (pecaAtual) {
       pecaAtual.formato.forEach((linha, r) => {
         linha.forEach((val, c) => {
-          if (val) {
-            desenharBloco3D(pecaAtual.x + c, pecaAtual.y + r, pecaAtual);
-          }
+          if (val) desenharBloco3D(pecaAtual.x + c, pecaAtual.y + r, pecaAtual);
         });
       });
     }
@@ -164,20 +127,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function limparLinhas() {
     let linhasCompletas = 0;
-    for (let r = LINHAS - 1; r >= 0; r--) {
+    let novoTabuleiro = [];
+
+    for (let r = 0; r < LINHAS; r++) {
       if (tabuleiro[r].every(celula => celula !== 0)) {
-        tabuleiro.splice(r, 1);
-        tabuleiro.unshift(Array(COLUNAS).fill(0));
         linhasCompletas++;
-        r++; 
+      } else {
+        novoTabuleiro.push(tabuleiro[r]);
       }
     }
+
+    while (novoTabuleiro.length < LINHAS) {
+      novoTabuleiro.unshift(Array(COLUNAS).fill(0));
+    }
+
+    tabuleiro = novoTabuleiro;
 
     if (linhasCompletas > 0) {
       linhasLimpas += linhasCompletas;
       pontos += linhasCompletas * 100 * linhasCompletas;
-      document.getElementById("pontos").innerText = pontos;
-      document.getElementById("linhas").innerText = linhasLimpas;
+      const elPontos = document.getElementById("pontos");
+      const elLinhas = document.getElementById("linhas");
+      if (elPontos) elPontos.innerText = pontos;
+      if (elLinhas) elLinhas.innerText = linhasLimpas;
     }
   }
 
@@ -228,51 +200,72 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function fimDeJogo() {
     jogoAtivo = false;
-    clearInterval(timerQueda);
+    if (timerQueda) clearInterval(timerQueda);
 
     ctx.fillStyle = "rgba(15, 17, 26, 0.88)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     ctx.fillStyle = "#FF2A6D";
-    ctx.font = "bold 24px Poppins";
+    ctx.font = "bold 22px Poppins";
     ctx.textAlign = "center";
     ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2 - 10);
 
     ctx.fillStyle = "#FFFFFF";
-    ctx.font = "16px Poppins";
+    ctx.font = "15px Poppins";
     ctx.fillText("Pontos: " + pontos, canvas.width / 2, canvas.height / 2 + 25);
   }
 
   function reiniciarJogo() {
-    clearInterval(timerQueda);
+    if (timerQueda) clearInterval(timerQueda);
     tabuleiro = Array.from({ length: LINHAS }, () => Array(COLUNAS).fill(0));
     pontos = 0;
     linhasLimpas = 0;
     jogoAtivo = true;
-    document.getElementById("pontos").innerText = "0";
-    document.getElementById("linhas").innerText = "0";
+    const elPontos = document.getElementById("pontos");
+    const elLinhas = document.getElementById("linhas");
+    if (elPontos) elPontos.innerText = "0";
+    if (elLinhas) elLinhas.innerText = "0";
     pecaAtual = criarPeca();
     desenhar();
     timerQueda = setInterval(moverBaixo, 600);
   }
 
-  // Controles de Teclado
   document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft" || e.key === "a") moverEsquerda();
-    if (e.key === "ArrowRight" || e.key === "d") moverDireita();
-    if (e.key === "ArrowDown" || e.key === "s") moverBaixo();
-    if (e.key === "ArrowUp" || e.key === "w") girarPeca();
+    const teclasJogo = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", " ", "w", "a", "s", "d", "W", "A", "S", "D"];
+    if (teclasJogo.includes(e.key)) {
+      e.preventDefault();
+    }
+
+    const key = e.key.toLowerCase();
+    if (key === "arrowleft" || key === "a") moverEsquerda();
+    if (key === "arrowright" || key === "d") moverDireita();
+    if (key === "arrowdown" || key === "s") moverBaixo();
+    if (key === "arrowup" || key === "w") girarPeca();
     if (e.key === " ") soltarRapido();
   });
 
-  // Controles Touch / Mobile
-  document.getElementById("btnRotate").onclick = girarPeca;
-  document.getElementById("btnLeft").onclick = moverEsquerda;
-  document.getElementById("btnRight").onclick = moverDireita;
-  document.getElementById("btnDown").onclick = moverBaixo;
-  document.getElementById("btnDrop").onclick = soltarRapido;
-  document.getElementById("btnReiniciar").onclick = reiniciarJogo;
+  const bindAction = (id, fn) => {
+    const btn = document.getElementById(id);
+    if (btn) {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        fn();
+      });
+    }
+  };
+
+  bindAction("btnRotate", girarPeca);
+  bindAction("btnLeft", moverEsquerda);
+  bindAction("btnRight", moverDireita);
+  bindAction("btnDown", moverBaixo);
+  bindAction("btnDrop", soltarRapido);
+  bindAction("btnReiniciar", reiniciarJogo);
 
   reiniciarJogo();
-});
+}
 
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", inicializarTetris);
+} else {
+  inicializarTetris();
+}
