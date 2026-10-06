@@ -25,11 +25,9 @@
 
 <header>
 
-  <div class="cabecalho-itens">
-
+  <div class="cabecalho-itens" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 10px 20px;">
 
     <!-- FOTO DE MATHEUS -->
-
     <img
       class="cabecalho_imagem"
       src="foto cabelo matheus.png.jpg"
@@ -37,66 +35,62 @@
     >
 
 
-    <!-- NOME -->
-
-    <h1 class="titulo_site">
+    <!-- NOME (Centralizado) -->
+    <h1 class="titulo_site" style="flex: 1; text-align: center; margin: 0;">
       Matheus do Campo Valente
     </h1>
 
 
-    <!-- MENU -->
+    <!-- CONTAINER DIREITO (Instagram à esquerda do Menu) -->
+    <div style="display: flex; align-items: center; gap: 15px;">
 
-    <details class="dropdown">
-
-      <summary class="dropbtn">
-        ☰ Menu
-      </summary>
-
-
-      <div class="dropdown-content">
-
-        <a href="index.html">
-          🏠 Início
+      <!-- INSTAGRAM (À esquerda do menu) -->
+      <div class="sociais">
+        <a
+          href="https://www.instagram.com/046_valente/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            class="estudante-icone"
+            src="logo insta roxo.png.jpg"
+            alt="Instagram de Matheus"
+          >
         </a>
-
-        <a href="sobre.html">
-          👤 Sobre mim
-        </a>
-
-        <a href="fotos.html">
-          📸 Minhas fotos
-        </a>
-
-        <a href="videos.html">
-          🎬 Meus vídeos
-        </a>
-
-        <a href="contato.html">
-          📞 Meu contato
-        </a>
-
       </div>
 
-    </details>
+      <!-- MENU (No canto direito) -->
+      <details class="dropdown">
 
+        <summary class="dropbtn">
+          ☰ Menu
+        </summary>
 
-    <!-- INSTAGRAM -->
+        <div class="dropdown-content">
 
-    <div class="sociais">
+          <a href="index.html">
+            🏠 Início
+          </a>
 
-      <a
-        href=https://www.instagram.com/046_valente/
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+          <a href="sobre.html">
+            👤 Sobre mim
+          </a>
 
-        <img
-          class="estudante-icone"
-          src="logo insta roxo.png.jpg"
-          alt="Instagram de Matheus"
-        >
+          <a href="fotos.html">
+            📸 Minhas fotos
+          </a>
 
-      </a>
+          <a href="videos.html">
+            🎬 Meus vídeos
+          </a>
+
+          <a href="contato.html">
+            📞 Meu contato
+          </a>
+
+        </div>
+
+      </details>
 
     </div>
 
