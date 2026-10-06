@@ -13,146 +13,53 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
 
-  <!-- ESTILOS DE ANIMAÇÃO E LAYOUT FUTURISTA -->
   <style>
-    /* Luzes de Fundo Flutuantes Animadas */
-    body {
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    body::before, body::after {
-      content: '';
-      position: fixed;
-      width: 350px;
-      height: 350px;
-      border-radius: 50%;
-      filter: blur(120px);
-      z-index: -1;
-      opacity: 0.35;
-      animation: flutuarLuz 8s infinite alternate ease-in-out;
-    }
-
-    body::before {
-      top: 10%;
-      left: 5%;
-      background: #7B2CBF;
-    }
-
-    body::after {
-      bottom: 10%;
-      right: 5%;
-      background: #00E5FF;
-      animation-delay: -4s;
-    }
-
-    @keyframes flutuarLuz {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(40px, 50px) scale(1.2); }
-    }
-
-    /* Animação de Entrada dos Elementos */
-    @keyframes surgirElemento {
+    /* Transição suave ao carregar */
+    @keyframes entradaSuave {
       from {
         opacity: 0;
-        transform: translateY(35px) scale(0.98);
+        transform: translateY(15px);
       }
       to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
       }
     }
 
-    /* Animação de Borda Neon e Brilho Pulsante */
-    @keyframes bordaNeonPulsante {
-      0%, 100% {
-        border-color: rgba(123, 44, 191, 0.6);
-        box-shadow: 0 0 25px rgba(123, 44, 191, 0.3), inset 0 0 15px rgba(123, 44, 191, 0.15);
-      }
-      50% {
-        border-color: rgba(0, 229, 255, 0.8);
-        box-shadow: 0 0 45px rgba(0, 229, 255, 0.45), inset 0 0 25px rgba(0, 229, 255, 0.2);
-      }
-    }
-
-    /* Gradiente de Cor Animado para o Título */
-    @keyframes textoGradiente {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Container Centralizador (Meio exato da página) */
+    /* Container Centralizador */
     .secao-sobre-central {
-      min-height: 85vh;
+      min-height: 80vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 50px 20px;
+      padding: 40px 20px;
     }
 
-    /* Cartão Futuro Glassmorphism */
+    /* Cartão Limpo e Moderno */
     .cartao-sobre {
-      background: rgba(11, 12, 16, 0.75);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 2px solid rgba(123, 44, 191, 0.5);
-      border-radius: 20px;
-      padding: 60px 45px;
-      max-width: 1000px;
+      background: rgba(17, 19, 26, 0.85);
+      border: 1px solid rgba(123, 44, 191, 0.4);
+      border-radius: 16px;
+      padding: 50px 40px;
+      max-width: 900px;
       width: 100%;
       text-align: center;
-      animation: surgirElemento 1s cubic-bezier(0.16, 1, 0.3, 1) forwards, bordaNeonPulsante 5s infinite ease-in-out;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      animation: entradaSuave 0.6s ease-out forwards;
     }
 
-    .cartao-sobre:hover {
-      transform: translateY(-6px) scale(1.01);
-    }
-
-    /* Título com Texto Gradiente Animado */
-    .titulo-animado {
-      font-size: 3.2rem;
-      font-weight: 800;
-      margin-bottom: 35px;
-      text-align: center;
-      background: linear-gradient(90deg, #7B2CBF, #00E5FF, #9D4EDD, #00E5FF);
-      background-size: 300% 300%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: textoGradiente 6s ease infinite;
-    }
-
-    /* Parágrafos Animados em Cascata */
-    .texto-p {
-      font-size: 1.9rem;
-      line-height: 1.85;
-      color: #FFFFFF;
-      text-align: center;
-      margin-bottom: 25px;
-      opacity: 0;
-      animation: surgirElemento 0.8s ease-out forwards;
-    }
-
-    .texto-p:nth-child(2) { animation-delay: 0.3s; }
-    .texto-p:nth-child(3) { animation-delay: 0.5s; }
-    .texto-p:nth-child(4) { animation-delay: 0.7s; }
-
-    /* Destaques em Texto Neon */
+    /* Destaques em Texto */
     .destaque-neon {
       color: #00E5FF;
-      font-weight: 700;
-      text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+      font-weight: 600;
     }
 
     .destaque-roxo {
       color: #9D4EDD;
-      font-weight: 700;
-      text-shadow: 0 0 10px rgba(157, 78, 221, 0.4);
+      font-weight: 600;
     }
   </style>
 
@@ -204,76 +111,4 @@
           ☰ Menu
         </summary>
 
-        <div class="dropdown-content">
-
-          <a href="index.html" style="font-size: 1.3rem;">
-            🏠 Início
-          </a>
-
-          <a href="sobre.html" style="font-size: 1.3rem;">
-            👤 Sobre mim
-          </a>
-
-          <a href="fotos.html" style="font-size: 1.3rem;">
-            📸 Minhas fotos
-          </a>
-
-          <a href="videos.html" style="font-size: 1.3rem;">
-            🎬 Meus vídeos
-          </a>
-
-          <a href="contato.html" style="font-size: 1.3rem;">
-            📞 Meu contato
-          </a>
-
-        </div>
-
-      </details>
-
-    </div>
-
-  </div>
-
-</header>
-
-
-<!-- SEÇÃO SOBRE MIM (CENTRALIZADA, EXPANDIDA E ANIMADA) -->
-
-<main class="secao-sobre-central">
-
-  <div class="cartao-sobre">
-
-    <h2 class="titulo-animado">
-      Perfil Institucional e Trajetória Pessoal
-    </h2>
-
-    <p class="texto-p">
-      Chamo-me <span class="destaque-neon">Matheus do Campo Valente</span> e atuo como estudante no respeitado <span class="destaque-roxo">Colégio Estadual Professor Júlio Szymanski</span>, estando atualmente matriculado no 2º ano do Ensino Médio com formação técnica integrada em <span class="destaque-neon">Desenvolvimento de Sistemas</span>.
-    </p>
-
-    <p class="texto-p">
-      Sou movido pelo fascínio contínuo pelas ciências tecnológicas, pela lógica de programação e pela criação de soluções digitais inovadoras. Em perfeita harmonia com minhas atribuições acadêmicas, dedico meu tempo livre à prática do ciclismo e ao convívio social, hábitos que promovem disciplina, foco e bem-estar físico e mental.
-    </p>
-
-    <p class="texto-p">
-      Este portal web foi estrategicamente desenvolvido para consolidar minha evolução técnica, apresentar produções visuais e audiovisuais de autoria própria, além de estabelecer um canal direto, formal e acessível de comunicação.
-    </p>
-
-  </div>
-
-</main>
-
-
-<!-- RODAPÉ -->
-
-<footer class="escola" style="text-align: center; padding: 40px 20px;">
-
-  <p style="font-size: 1.3rem; text-align: center;">
-    © 2026 | Matheus do Campo Valente. Todos os direitos reservados.
-  </p>
-
-</footer>
-
-
-</body>
-</html>
+        <div class
