@@ -2,20 +2,14 @@
 <html lang="pt-br">
 
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Jogo | Matheus Valente</title>
 
   <link rel="stylesheet" href="style.css">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     body {
@@ -38,7 +32,7 @@
       border: 1px solid rgba(123, 44, 191, 0.5);
       border-radius: 20px;
       padding: 35px 25px;
-      max-width: 600px;
+      max-width: 500px;
       width: 100%;
       text-align: center;
       box-shadow: 0 0 25px rgba(123, 44, 191, 0.25);
@@ -53,20 +47,25 @@
       width: 100%;
       max-width: 400px;
       margin-bottom: 20px;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: 600;
       background: rgba(30, 35, 52, 0.8);
       padding: 12px;
       border-radius: 12px;
       border: 1px solid rgba(0, 229, 255, 0.3);
+      box-sizing: border-box;
     }
 
     .placar span {
       color: #00E5FF;
     }
 
+    /* Força a visibilidade e o tamanho do Canvas */
     #canvasJogo {
-      background-color: #090A0F;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      background-color: #090A0F !important;
       border: 2px solid #7B2CBF;
       border-radius: 12px;
       box-shadow: 0 0 20px rgba(123, 44, 191, 0.4);
@@ -77,7 +76,7 @@
     .btn-reiniciar {
       margin-top: 20px;
       padding: 12px 30px;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 600;
       color: #FFFFFF;
       background: linear-gradient(135deg, #7B2CBF, #9D4EDD);
@@ -96,8 +95,8 @@
 
     .controles-mobile {
       display: grid;
-      grid-template-columns: repeat(3, 60px);
-      grid-template-rows: repeat(2, 50px);
+      grid-template-columns: repeat(3, 55px);
+      grid-template-rows: repeat(2, 45px);
       gap: 10px;
       margin-top: 20px;
       justify-content: center;
@@ -107,7 +106,7 @@
       background: rgba(30, 35, 52, 0.9);
       border: 1px solid #00E5FF;
       color: #00E5FF;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       border-radius: 10px;
       cursor: pointer;
       display: flex;
@@ -126,40 +125,217 @@
     .btn-down { grid-column: 2; grid-row: 2; }
     .btn-right { grid-column: 3; grid-row: 2; }
   </style>
-
 </head>
 
 <body>
 
-
 <!-- CABEÇALHO -->
-
 <header>
-
   <div class="cabecalho-itens" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 10px 20px;">
 
-    <!-- FOTO -->
-    <img
-      class="cabecalho_imagem"
-      src="foto cabelo matheus.png.jpg"
-      alt="Foto de Matheus"
-    >
+    <img class="cabecalho_imagem" src="foto cabelo matheus.png.jpg" alt="Foto de Matheus">
 
-    <!-- TÍTULO -->
     <h1 class="titulo_site" style="flex: 1; text-align: center; margin: 0; font-size: 2.8rem; color: #00E5FF;">
       Jogo Neon
     </h1>
 
-    <!-- CONTAINER DIREITO (Instagram + Menu) -->
     <div style="display: flex; align-items: center; gap: 15px;">
 
-      <!-- INSTAGRAM -->
       <div class="sociais">
-        <a
-          href="https://www.instagram.com/046_valente/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            class="estudante-icone"
-            src="logo insta
+        <a href="https://www.instagram.com/046_valente/" target="_blank" rel="noopener noreferrer">
+          <img class="estudante-icone" src="logo insta roxo.png.jpg" alt="Instagram de Matheus">
+        </a>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<!-- SEÇÃO DO JOGO -->
+<main class="secao-jogo-central">
+  <div class="cartao-jogo">
+    <h2 style="font-size: 2.2rem; color: #7B2CBF; margin-top: 0; margin-bottom: 15px;">
+      🐍 Cobrinha Neon
+    </h2>
+
+    <div class="placar">
+      <div>Pontos: <span id="pontos">0</span></div>
+      <div>Recorde: <span id="recorde">0</span></div>
+    </div>
+
+    <!-- TELA DO JOGO (CANVAS) -->
+    <canvas id="canvasJogo" width="360" height="360"></canvas>
+
+    <button class="btn-reiniciar" id="btnReiniciar">Reiniciar Jogo</button>
+
+    <!-- BOTOEIRA PARA DISPOSITIVOS MÓVEIS -->
+    <div class="controles-mobile">
+      <button class="btn-control btn-up" id="btnUp">▲</button>
+      <button class="btn-control btn-left" id="btnLeft">◄</button>
+      <button class="btn-control btn-down" id="btnDown">▼</button>
+      <button class="btn-control btn-right" id="btnRight">►</button>
+    </div>
+  </div>
+</main>
+
+<!-- RODAPÉ -->
+<footer class="escola" style="text-align: center; padding: 40px 20px;">
+  <p style="font-size: 1.3rem; text-align: center; color: #FFFFFF;">
+    © 2026 | Matheus do Campo Valente. Todos os direitos reservados.
+  </p>
+</footer>
+
+<!-- SCRIPT DO JOGO -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const canvas = document.getElementById("canvasJogo");
+    const ctx = canvas.getContext("2d");
+
+    const tamanhoBloco = 18;
+    const totalBlocos = canvas.width / tamanhoBloco;
+
+    let cobrinha = [{ x: 10, y: 10 }];
+    let comida = { x: 15, y: 15 };
+    let direcao = "RIGHT";
+    let proximaDirecao = "RIGHT";
+    let pontos = 0;
+    let recorde = localStorage.getItem("recordeCobrinha") || 0;
+    let loopJogo;
+    let jogoAtivo = true;
+
+    document.getElementById("recorde").innerText = recorde;
+
+    // Teclado
+    document.addEventListener("keydown", (event) => {
+      const tecla = event.key;
+      if ((tecla === "ArrowUp" || tecla === "w" || tecla === "W") && direcao !== "DOWN") proximaDirecao = "UP";
+      if ((tecla === "ArrowDown" || tecla === "s" || tecla === "S") && direcao !== "UP") proximaDirecao = "DOWN";
+      if ((tecla === "ArrowLeft" || tecla === "a" || tecla === "A") && direcao !== "RIGHT") proximaDirecao = "LEFT";
+      if ((tecla === "ArrowRight" || tecla === "d" || tecla === "D") && direcao !== "LEFT") proximaDirecao = "RIGHT";
+    });
+
+    // Botões mobile
+    document.getElementById("btnUp").onclick = () => mudarDirecao('UP');
+    document.getElementById("btnDown").onclick = () => mudarDirecao('DOWN');
+    document.getElementById("btnLeft").onclick = () => mudarDirecao('LEFT');
+    document.getElementById("btnRight").onclick = () => mudarDirecao('RIGHT');
+    document.getElementById("btnReiniciar").onclick = () => reiniciarJogo();
+
+    function mudarDirecao(novaDirecao) {
+      if (novaDirecao === "UP" && direcao !== "DOWN") proximaDirecao = "UP";
+      if (novaDirecao === "DOWN" && direcao !== "UP") proximaDirecao = "DOWN";
+      if (novaDirecao === "LEFT" && direcao !== "RIGHT") proximaDirecao = "LEFT";
+      if (novaDirecao === "RIGHT" && direcao !== "LEFT") proximaDirecao = "RIGHT";
+    }
+
+    function gerarComida() {
+      comida = {
+        x: Math.floor(Math.random() * totalBlocos),
+        y: Math.floor(Math.random() * totalBlocos)
+      };
+      cobrinha.forEach(segmento => {
+        if (segmento.x === comida.x && segmento.y === comida.y) {
+          gerarComida();
+        }
+      });
+    }
+
+    function atualizar() {
+      if (!jogoAtivo) return;
+
+      direcao = proximaDirecao;
+      let cabeca = { ...cobrinha[0] };
+
+      if (direcao === "UP") cabeca.y -= 1;
+      if (direcao === "DOWN") cabeca.y += 1;
+      if (direcao === "LEFT") cabeca.x -= 1;
+      if (direcao === "RIGHT") cabeca.x += 1;
+
+      // Colisão paredes
+      if (cabeca.x < 0 || cabeca.x >= totalBlocos || cabeca.y < 0 || cabeca.y >= totalBlocos) {
+        fimDeJogo();
+        return;
+      }
+
+      // Colisão próprio corpo
+      for (let i = 0; i < cobrinha.length; i++) {
+        if (cobrinha[i].x === cabeca.x && cobrinha[i].y === cabeca.y) {
+          fimDeJogo();
+          return;
+        }
+      }
+
+      cobrinha.unshift(cabeca);
+
+      if (cabeca.x === comida.x && cabeca.y === comida.y) {
+        pontos += 10;
+        document.getElementById("pontos").innerText = pontos;
+        if (pontos > recorde) {
+          recorde = pontos;
+          localStorage.setItem("recordeCobrinha", recorde);
+          document.getElementById("recorde").innerText = recorde;
+        }
+        gerarComida();
+      } else {
+        cobrinha.pop();
+      }
+
+      desenhar();
+    }
+
+    function desenhar() {
+      ctx.fillStyle = "#090A0F";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Comida Cyan Neon
+      ctx.fillStyle = "#00E5FF";
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = "#00E5FF";
+      ctx.fillRect(comida.x * tamanhoBloco, comida.y * tamanhoBloco, tamanhoBloco - 2, tamanhoBloco - 2);
+
+      // Cobrinha
+      cobrinha.forEach((segmento, indice) => {
+        ctx.fillStyle = indice === 0 ? "#00E5FF" : "#7B2CBF";
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = ctx.fillStyle;
+        ctx.fillRect(segmento.x * tamanhoBloco, segmento.y * tamanhoBloco, tamanhoBloco - 2, tamanhoBloco - 2);
+      });
+
+      ctx.shadowBlur = 0;
+    }
+
+    function fimDeJogo() {
+      jogoAtivo = false;
+      clearInterval(loopJogo);
+
+      ctx.fillStyle = "rgba(15, 17, 26, 0.88)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#FF0055";
+      ctx.font = "bold 24px Poppins";
+      ctx.textAlign = "center";
+      ctx.fillText("FIM DE JOGO!", canvas.width / 2, canvas.height / 2 - 10);
+
+      ctx.fillStyle = "#FFFFFF";
+      ctx.font = "16px Poppins";
+      ctx.fillText("Pontuação: " + pontos, canvas.width / 2, canvas.height / 2 + 25);
+    }
+
+    function reiniciarJogo() {
+      clearInterval(loopJogo);
+      cobrinha = [{ x: 10, y: 10 }];
+      direcao = "RIGHT";
+      proximaDirecao = "RIGHT";
+      pontos = 0;
+      jogoAtivo = true;
+      document.getElementById("pontos").innerText = "0";
+      gerarComida();
+      loopJogo = setInterval(atualizar, 120);
+    }
+
+    reiniciarJogo();
+  });
+</script>
+
+</body>
+</html>
