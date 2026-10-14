@@ -1,240 +1,424 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tetris 3D | Matheus Valente</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Carregamento do script.js externo -->
-  <script src="script.js" defer></script>
-
+  <title>Jogo Tetris com Menu Interativo</title>
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
     }
 
     body {
-      background-color: #0F111A;
-      color: #FFFFFF;
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      touch-action: manipulation;
-    }
-
-    header {
-      padding: 15px 20px;
-      background: rgba(22, 26, 38, 0.8);
-      border-bottom: 1px solid rgba(123, 44, 191, 0.3);
-    }
-
-    .cabecalho-itens {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .titulo_site {
-      margin: 0;
-      font-size: 2rem;
-      color: #00E5FF;
-      text-align: center;
-    }
-
-    .secao-jogo-central {
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px 15px;
-    }
-
-    .cartao-jogo {
-      background: rgba(22, 26, 38, 0.95);
-      border: 1px solid rgba(123, 44, 191, 0.5);
-      border-radius: 20px;
-      padding: 25px 20px;
-      max-width: 400px;
-      width: 100%;
-      text-align: center;
-      box-shadow: 0 0 25px rgba(123, 44, 191, 0.25);
+      background-color: #0f111a;
+      color: #ffffff;
       display: flex;
       flex-direction: column;
       align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Menu Interativo Principal */
+    .menu-interativo {
+      width: 100%;
+      background-color: #1a1d2e;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      position: relative;
+      z-index: 100;
+    }
+
+    .menu-interativo .logo {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #00E5FF;
+    }
+
+    .menu-interativo nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin-left: 20px;
+      transition: color 0.2s;
+    }
+
+    .menu-interativo nav a:hover {
+      color: #00E5FF;
+    }
+
+    /* Layout do Jogo */
+    .game-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px 0;
+      z-index: 1;
     }
 
     .placar {
       display: flex;
-      justify-content: space-around;
-      width: 100%;
+      gap: 20px;
+      font-size: 1.1rem;
       margin-bottom: 15px;
-      font-size: 1rem;
-      font-weight: 600;
-      background: rgba(30, 35, 52, 0.8);
-      padding: 10px;
-      border-radius: 12px;
-      border: 1px solid rgba(0, 229, 255, 0.3);
+      background: #1a1d2e;
+      padding: 10px 20px;
+      border-radius: 8px;
     }
 
     .placar span {
       color: #00E5FF;
+      font-weight: bold;
     }
 
-    #canvasTetris {
-      display: block;
-      background-color: #08090E;
-      border: 3px solid #7B2CBF;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(123, 44, 191, 0.4);
-      max-width: 100%;
-      height: auto;
+    canvas {
+      border: 2px solid #2d62ff;
+      border-radius: 6px;
+      box-shadow: 0 0 20px rgba(45, 98, 255, 0.2);
+    }
+
+    /* Painel de Controles do Jogo */
+    .controles-jogo {
+      margin-top: 15px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      max-width: 300px;
+      width: 100%;
+    }
+
+    .controles-jogo button, .btn-reiniciar {
+      background: #2D62FF;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .controles-jogo button:hover, .btn-reiniciar:hover {
+      background: #00E5FF;
+      color: #000;
     }
 
     .btn-reiniciar {
-      margin-top: 15px;
-      padding: 10px 24px;
-      font-size: 1rem;
-      font-weight: 600;
-      color: #FFFFFF;
-      background: linear-gradient(135deg, #7B2CBF, #9D4EDD);
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(123, 44, 191, 0.4);
-    }
-
-    .btn-reiniciar:hover {
-      background: linear-gradient(135deg, #00E5FF, #7B2CBF);
-      transform: translateY(-2px);
-    }
-
-    .controles-mobile {
-      display: grid;
-      grid-template-columns: repeat(4, 50px);
-      grid-template-rows: repeat(2, 45px);
-      gap: 8px;
-      margin-top: 15px;
-      justify-content: center;
-    }
-
-    .btn-control {
-      background: rgba(30, 35, 52, 0.9);
-      border: 1px solid #00E5FF;
-      color: #00E5FF;
-      font-size: 1.1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      user-select: none;
-      -webkit-user-select: none;
-    }
-
-    .btn-control:active {
-      background: #00E5FF;
-      color: #0F111A;
-    }
-
-    .btn-left { grid-column: 1; grid-row: 2; }
-    .btn-down { grid-column: 2; grid-row: 2; }
-    .btn-right { grid-column: 3; grid-row: 2; }
-    .btn-rotate { grid-column: 2 / span 2; grid-row: 1; width: 100%; }
-    .btn-drop { grid-column: 4; grid-row: 2; }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #888888;
+      grid-column: span 3;
+      background: #FF2A6D;
+      margin-top: 5px;
     }
   </style>
 </head>
-
 <body>
 
-<header>
-  <div class="cabecalho-itens">
-    <h1 class="titulo_site">Tetris 3D</h1>
-  </div>
-</header>
+  <!-- Menu Interativo -->
+  <header class="menu-interativo">
+    <div class="logo">Meu Site Pessoal</div>
+    <nav>
+      <a href="#home">Início</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#jogo">Jogo</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
 
-<main class="secao-jogo-central">
-  <div class="cartao-jogo">
-    <h2 style="font-size: 1.8rem; color: #7B2CBF; margin: 0 0 10px 0;">🎮 Tetris Realista</h2>
-
+  <!-- Área do Jogo Tetris -->
+  <main class="game-container">
     <div class="placar">
       <div>Pontos: <span id="pontos">0</span></div>
       <div>Linhas: <span id="linhas">0</span></div>
     </div>
 
-    <canvas id="canvasTetris" width="240" height="480"></canvas>
+    <canvas id="canvasTetris" width="300" height="600"></canvas>
 
-    <button class="btn-reiniciar" id="btnReiniciar">Novo Jogo</button>
-
-    <div class="controles-mobile">
-      <button class="btn-control btn-rotate" id="btnRotate">🔄 Girar</button>
-      <button class="btn-control btn-left" id="btnLeft">◄</button>
-      <button class="btn-control btn-down" id="btnDown">▼</button>
-      <button class="btn-control btn-right" id="btnRight">►</button>
-      <button class="btn-control btn-drop" id="btnDrop">⬇</button>
+    <!-- Menu de Controles Touch / Botões -->
+    <div class="controles-jogo">
+      <button id="btnRotate">Girar (W/↑)</button>
+      <button id="btnDrop">Soltar (Espaço)</button>
+      <button id="btnReiniciar" class="btn-reiniciar">Reiniciar Jogo</button>
+      <button id="btnLeft">← Esquerda</button>
+      <button id="btnDown">↓ Baixo</button>
+      <button id="btnRight">Direita →</button>
     </div>
-  </div>
-</main>
+  </main>
 
-<footer>
-  <p>© 2026 | Matheus do Campo Valente. Todos os direitos reservados.</p>
-</footer>
+  <script>
+    function inicializarTetris() {
+      const canvas = document.getElementById("canvasTetris");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
 
+      const COLUNAS = 10;
+      const LINHAS = 20;
+      const TAMANHO_BLOCO = canvas.width / COLUNAS;
+
+      let tabuleiro = Array.from({ length: LINHAS }, () => Array(COLUNAS).fill(0));
+      let pontos = 0;
+      let linhasLimpas = 0;
+      let jogoAtivo = true;
+      let timerQueda = null;
+
+      const PECAS = [
+        { formato: [[1, 1, 1, 1]], cor: '#00E5FF', bordaClara: '#E0FFFF', bordaEspecial: '#008B8B' },
+        { formato: [[1, 0, 0], [1, 1, 1]], cor: '#2D62FF', bordaClara: '#80A8FF', bordaEspecial: '#002699' },
+        { formato: [[0, 0, 1], [1, 1, 1]], cor: '#FF8800', bordaClara: '#FFC480', bordaEspecial: '#995200' },
+        { formato: [[1, 1], [1, 1]], cor: '#FFD700', bordaClara: '#FFF099', bordaEspecial: '#998200' },
+        { formato: [[0, 1, 1], [1, 1, 0]], cor: '#00FF66', bordaClara: '#B3FFD1', bordaEspecial: '#00993D' },
+        { formato: [[0, 1, 0], [1, 1, 1]], cor: '#A100FF', bordaClara: '#E2B3FF', bordaEspecial: '#59008C' },
+        { formato: [[1, 1, 0], [0, 1, 1]], cor: '#FF2A6D', bordaClara: '#FFB3CB', bordaEspecial: '#990033' }
+      ];
+
+      let pecaAtual = criarPeca();
+
+      function criarPeca() {
+        const idx = Math.floor(Math.random() * PECAS.length);
+        const peca = PECAS[idx];
+        return {
+          ...peca,
+          x: Math.floor(COLUNAS / 2) - Math.ceil(peca.formato[0].length / 2),
+          y: 0
+        };
+      }
+
+      function desenharBloco3D(x, y, pecaInfo) {
+        const px = x * TAMANHO_BLOCO;
+        const py = y * TAMANHO_BLOCO;
+        const tam = TAMANHO_BLOCO;
+
+        ctx.fillStyle = pecaInfo.cor;
+        ctx.fillRect(px, py, tam, tam);
+
+        ctx.fillStyle = pecaInfo.bordaClara;
+        ctx.beginPath();
+        ctx.moveTo(px, py); ctx.lineTo(px + tam, py); ctx.lineTo(px + tam - 3, py + 3);
+        ctx.lineTo(px + 3, py + 3); ctx.lineTo(px + 3, py + tam - 3); ctx.lineTo(px, py + tam);
+        ctx.fill();
+
+        ctx.fillStyle = pecaInfo.bordaEspecial;
+        ctx.beginPath();
+        ctx.moveTo(px + tam, py); ctx.lineTo(px + tam, py + tam); ctx.lineTo(px, py + tam);
+        ctx.lineTo(px + 3, py + tam - 3); ctx.lineTo(px + tam - 3, py + tam - 3); ctx.lineTo(px + tam - 3, py + 3);
+        ctx.fill();
+
+        ctx.strokeStyle = 'rgba(0,0,0,0.4)';
+        ctx.strokeRect(px, py, tam, tam);
+      }
+
+      function desenhar() {
+        ctx.fillStyle = '#08090E';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+        for (let r = 0; r <= LINHAS; r++) {
+          ctx.beginPath(); ctx.moveTo(0, r * TAMANHO_BLOCO); ctx.lineTo(canvas.width, r * TAMANHO_BLOCO); ctx.stroke();
+        }
+        for (let c = 0; c <= COLUNAS; c++) {
+          ctx.beginPath(); ctx.moveTo(c * TAMANHO_BLOCO, 0); ctx.lineTo(c * TAMANHO_BLOCO, canvas.height); ctx.stroke();
+        }
+
+        for (let r = 0; r < LINHAS; r++) {
+          for (let c = 0; c < COLUNAS; c++) {
+            if (tabuleiro[r][c]) desenharBloco3D(c, r, tabuleiro[r][c]);
+          }
+        }
+
+        if (pecaAtual) {
+          pecaAtual.formato.forEach((linha, r) => {
+            linha.forEach((val, c) => {
+              if (val) desenharBloco3D(pecaAtual.x + c, pecaAtual.y + r, pecaAtual);
+            });
+          });
+        }
+      }
+
+      function colidir(px, py, formato) {
+        for (let r = 0; r < formato.length; r++) {
+          for (let c = 0; c < formato[r].length; c++) {
+            if (formato[r][c]) {
+              let novoX = px + c;
+              let novoY = py + r;
+              if (novoX < 0 || novoX >= COLUNAS || novoY >= LINHAS) return true;
+              if (novoY >= 0 && tabuleiro[novoY][novoX]) return true;
+            }
+          }
+        }
+        return false;
+      }
+
+      function fixarPeca() {
+        pecaAtual.formato.forEach((linha, r) => {
+          linha.forEach((val, c) => {
+            if (val) {
+              let py = pecaAtual.y + r;
+              let px = pecaAtual.x + c;
+              if (py >= 0) {
+                tabuleiro[py][px] = {
+                  cor: pecaAtual.cor,
+                  bordaClara: pecaAtual.bordaClara,
+                  bordaEspecial: pecaAtual.bordaEspecial
+                };
+              }
+            }
+          });
+        });
+
+        limparLinhas();
+        pecaAtual = criarPeca();
+
+        if (colidir(pecaAtual.x, pecaAtual.y, pecaAtual.formato)) {
+          fimDeJogo();
+        }
+      }
+
+      function limparLinhas() {
+        let linhasCompletas = 0;
+        let novoTabuleiro = [];
+
+        for (let r = 0; r < LINHAS; r++) {
+          if (tabuleiro[r].every(celula => celula !== 0)) {
+            linhasCompletas++;
+          } else {
+            novoTabuleiro.push(tabuleiro[r]);
+          }
+        }
+
+        while (novoTabuleiro.length < LINHAS) {
+          novoTabuleiro.unshift(Array(COLUNAS).fill(0));
+        }
+
+        tabuleiro = novoTabuleiro;
+
+        if (linhasCompletas > 0) {
+          linhasLimpas += linhasCompletas;
+          pontos += linhasCompletas * 100 * linhasCompletas;
+          const elPontos = document.getElementById("pontos");
+          const elLinhas = document.getElementById("linhas");
+          if (elPontos) elPontos.innerText = pontos;
+          if (elLinhas) elLinhas.innerText = linhasLimpas;
+        }
+      }
+
+      function moverBaixo() {
+        if (!jogoAtivo) return;
+        if (!colidir(pecaAtual.x, pecaAtual.y + 1, pecaAtual.formato)) {
+          pecaAtual.y++;
+        } else {
+          fixarPeca();
+        }
+        desenhar();
+      }
+
+      function moverEsquerda() {
+        if (!jogoAtivo) return;
+        if (!colidir(pecaAtual.x - 1, pecaAtual.y, pecaAtual.formato)) {
+          pecaAtual.x--;
+          desenhar();
+        }
+      }
+
+      function moverDireita() {
+        if (!jogoAtivo) return;
+        if (!colidir(pecaAtual.x + 1, pecaAtual.y, pecaAtual.formato)) {
+          pecaAtual.x++;
+          desenhar();
+        }
+      }
+
+      function girarPeca() {
+        if (!jogoAtivo) return;
+        const matriz = pecaAtual.formato;
+        const novaMatriz = matriz[0].map((_, idx) => matriz.map(row => row[idx]).reverse());
+        if (!colidir(pecaAtual.x, pecaAtual.y, novaMatriz)) {
+          pecaAtual.formato = novaMatriz;
+          desenhar();
+        }
+      }
+
+      function soltarRapido() {
+        if (!jogoAtivo) return;
+        while (!colidir(pecaAtual.x, pecaAtual.y + 1, pecaAtual.formato)) {
+          pecaAtual.y++;
+        }
+        fixarPeca();
+        desenhar();
+      }
+
+      function fimDeJogo() {
+        jogoAtivo = false;
+        if (timerQueda) clearInterval(timerQueda);
+
+        ctx.fillStyle = "rgba(15, 17, 26, 0.88)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "#FF2A6D";
+        ctx.font = "bold 22px Poppins";
+        ctx.textAlign = "center";
+        ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2 - 10);
+
+        ctx.fillStyle = "#FFFFFF";
+        ctx.font = "15px Poppins";
+        ctx.fillText("Pontos: " + pontos, canvas.width / 2, canvas.height / 2 + 25);
+      }
+
+      function reiniciarJogo() {
+        if (timerQueda) clearInterval(timerQueda);
+        tabuleiro = Array.from({ length: LINHAS }, () => Array(COLUNAS).fill(0));
+        pontos = 0;
+        linhasLimpas = 0;
+        jogoAtivo = true;
+        const elPontos = document.getElementById("pontos");
+        const elLinhas = document.getElementById("linhas");
+        if (elPontos) elPontos.innerText = "0";
+        if (elLinhas) elLinhas.innerText = "0";
+        pecaAtual = criarPeca();
+        desenhar();
+        timerQueda = setInterval(moverBaixo, 600);
+      }
+
+      document.addEventListener("keydown", (e) => {
+        const teclasJogo = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", " ", "w", "a", "s", "d", "W", "A", "S", "D"];
+        if (teclasJogo.includes(e.key)) {
+          e.preventDefault();
+        }
+
+        const key = e.key.toLowerCase();
+        if (key === "arrowleft" || key === "a") moverEsquerda();
+        if (key === "arrowright" || key === "d") moverDireita();
+        if (key === "arrowdown" || key === "s") moverBaixo();
+        if (key === "arrowup" || key === "w") girarPeca();
+        if (e.key === " ") soltarRapido();
+      });
+
+      const bindAction = (id, fn) => {
+        const btn = document.getElementById(id);
+        if (btn) {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            fn();
+          });
+        }
+      };
+
+      bindAction("btnRotate", girarPeca);
+      bindAction("btnLeft", moverEsquerda);
+      bindAction("btnRight", moverDireita);
+      bindAction("btnDown", moverBaixo);
+      bindAction("btnDrop", soltarRapido);
+      bindAction("btnReiniciar", reiniciarJogo);
+
+      reiniciarJogo();
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", inicializarTetris);
+    } else {
+      inicializarTetris();
+    }
+  </script>
 </body>
 </html>
-
- <!-- MENU INTERATIVO -->
-      <details class="dropdown">
-
-        <summary class="dropbtn" style="font-size: 1.5rem; cursor: pointer; color: #FFFFFF;">
-          ☰ Menu
-        </summary>
-
-        <div class="dropdown-content">
-
-          <a href="index.html" style="font-size: 1.3rem;">
-            🏠 Início
-          </a>
-
-          <a href="sobre.html" style="font-size: 1.3rem;">
-            👤 Sobre mim
-          </a>
-
-          <a href="fotos.html" style="font-size: 1.3rem;">
-            📸 Minhas fotos
-          </a>
-
-          <a href="videos.html" style="font-size: 1.3rem;">
-            🎬 Meus vídeos
-          </a>
-
-          <a href="contato.html" style="font-size: 1.3rem;">
-            📞 Meu contato
-          </a>
-
-          <a href="jogo.html" style="font-size: 1.3rem;">
-            🎮 Jogo
-          </a>
-
-        </div>
-
-      </details>
-
-    </div>
-
-  </div>
-
-</header>
